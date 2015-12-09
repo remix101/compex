@@ -1,0 +1,1 @@
+C:\UniServerZ\www\lister\app/views/articles/create.blade.php

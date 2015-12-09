@@ -1,0 +1,203 @@
+html,
+body {
+    height: 100%;
+}
+
+.wrap {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -60px;
+    padding: 0 0 60px;
+}
+
+.wrap > .container {
+    padding: 40px 15px 20px;
+}
+
+.footer {
+    height: 60px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.jumbotron {
+    text-align: center;
+    background-color: transparent;
+}
+
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+
+.not-set {
+    color: #c55;
+    font-style: italic;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    padding-left: 5px;
+}
+
+a.asc:after {
+    content: /*"\e113"*/ "\e151";
+}
+
+a.desc:after {
+    content: /*"\e114"*/ "\e152";
+}
+
+.sort-numerical a.asc:after {
+    content: "\e153";
+}
+
+.sort-numerical a.desc:after {
+    content: "\e154";
+}
+
+.sort-ordinal a.asc:after {
+    content: "\e155";
+}
+
+.sort-ordinal a.desc:after {
+    content: "\e156";
+}
+
+.grid-view th {
+    white-space: nowrap;
+}
+
+.hint-block {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+}
+
+.error-summary {
+    color: #a94442;
+    background: #fdf7f7;
+    border-left: 3px solid #eed3d7;
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
+}
+
+.left-sidebar{
+    border-right: 1px dotted #E2E2E2;
+}
+
+/***********************************
+* - CONTAINER WIDTH ON BIGGER SCREENS 
+*********************************/
+@media (min-width: 1400px){
+    .container {
+        width: 1390px;
+    }
+}
+
+
+/* UI Thirty One */
+
+.ui-31 .team .team-member {
+	max-width: 380px;
+	margin: 30px auto;
+	padding-top: 30px;
+	background: #fff;
+	border: 1px solid #ddd;
+	border-radius: 6px;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+	overflow: hidden;
+}
+
+.ui-31  .team-member  .img-container {
+	max-width: 200px;
+	margin: 0 auto;
+	padding: 1px;
+	border: 5px solid #fff;
+	border-radius: 50%;
+	box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+	overflow: hidden;
+}
+
+.ui-31  .team-member  .img-container img {
+	border-radius: 50%;
+}
+
+.ui-31  .team-member h2 {
+	margin-top: 30px;
+	margin-bottom: 20px;
+	text-align: center;
+	font-size: 30px;
+	font-weight:400;
+	letter-spacing: 0.015em;
+	color: #3c4f54;
+}
+.ui-31  .team-member hr {
+	max-width: 90px;
+	margin: 0 auto;
+	margin-bottom: 22px;
+	border-top-width: 4px;
+}
+.ui-31  .team-member  .social { text-align: center; }
+.ui-31  .team-member  .social a{
+	display: inline-block;
+	margin: 0 1px;
+	width: 35px;
+	height: 35px;
+	line-height: 35px;
+	font-size: 14px;
+	text-align: center;
+	color: #fff;
+	border-radius: 50%;
+}
+
+.ui-31  .team-member .member-dtls {
+	margin-top: 30px;
+	max-height: 385px;
+	border-top: 1px solid #ddd;
+	box-shadow: 0 0 6px rgba(0,0,0,0.15) inset;
+}
+
+.ui-31  .team-member .member-dtls ul { margin: 0; }
+.ui-31  .team-member .member-dtls .list-item {
+	padding: 16px 22px;
+	background: #fafafa;
+	border-bottom: 1px solid #ddd;
+}
+.ui-31  .team-member .member-dtls .list-item:hover { 
+	background: #f5f5f5;
+}
+
+.ui-31  .team-member .member-dtls li:last-child .list-item {
+	border-bottom: 0;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+}
+.ui-31  .team-member .member-dtls .list-item h3 {
+	margin: 0;
+	font-size: 13px;
+	line-height: 24px;
+	color: #777;
+}
+
+.ui-31  .team-member .member-dtls .list-item h3 i { 
+	width: 20px;
+	margin-right: 6px; 
+	font-size: 18px;
+}
+.ui-31  .team-member .member-dtls .list-item .minfo {
+	display: block;
+	margin: 0;
+	padding: 0;
+	font-size: 13px;
+	line-height: 24px;
+	color: #888;
+}

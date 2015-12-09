@@ -1,0 +1,15 @@
+<?php
+
+return array(
+    'ROLE_ADMIN' => 1,
+    'ROLE_BUYER' => 2,
+    'ROLE_BROKER' => 3,
+    'ROLE_SELLER' => 4,
+    'PROPERTY_STATUS_NA' => 0,
+    'PROPERTY_STATUS_FREEHOLD' => 1,
+    'PROPERTY_STATUS_LEASE' => 2,
+    'PROPERTY_STATUS_BOTH' => 3,
+    'USER_STATUS_PENDING' => 1,
+    'USER_STATUS_VERIFIED' => 2,
+    'USER_STATUS_BANNED' => 3,
+);

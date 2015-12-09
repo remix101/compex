@@ -1,0 +1,99 @@
+
+/* Inbox */
+
+.pm-search {
+    background: #F5F5F5;
+    border-top: 1px solid #DDD;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+.pm-list > ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.pm-list > ul > li:first-child {
+    border-top: 1px solid #EEE;
+}
+.pm-list > ul > li {
+    padding: 15px;
+    border-bottom: 1px solid #EEE;
+}
+.pm-list > ul > li:hover {
+    background: #f5f5f5;
+}
+.pm-list > ul > li > p > img {
+    height: 50px;
+    width: 50px;
+    float: left;
+    margin-right: 15px;
+    overflow: hidden;
+}
+.pm-list > ul > li > p {
+    float: left;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+.pm-list > ul > li > p > a.inbox-dialog {
+    color: #999;
+}
+.pm-list > ul > li > p > a.inbox-dialog:hover {
+    color: #999;
+    text-decoration: none;
+}
+.message-answer {
+    background: #F5F5F5;
+    border-top: 1px solid #DDD;
+    padding: 20px;
+}
+.message-answer > form {
+    width: 80%;
+    float: left;
+}
+
+.modal-content {
+    border-radius: 0;
+}
+.modal-header {
+    background: #f5f5f5;
+}
+.modal-header > img, 
+.message-answer > img {
+    height: 50px;
+    width: 50px;
+    margin: 0 15px 15px 0;
+    float: left;
+    overflow: hidden;
+}
+.bottom-15 {
+    margin-bottom: 15px;
+}
+
+.media-object {
+    height: 64px;
+    width: 64px;
+}
+.media-heading a{
+    color: #333;
+}
+.media-heading a:hover{
+    color: #333;
+    text-decoration: none;
+}
+.read-more {
+    float:right;
+    margin-top: 10px;
+}
+.pm-av
+{
+    height: 32px;
+    width: 32px;
+}
+.pm-name
+{
+    padding-left: 10px;
+}
+.meta span{
+    font-size: .8em;
+    padding-left: 10px;
+}
