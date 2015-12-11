@@ -13,11 +13,11 @@
                         <tr>
                             <th> </th>
                             <th>User Name</th>
-                            <th>Account Type</th>
                             <th>Email</th>
                             <th>Personal Phone</th>
                             <th>Work Phone</th>
                             <th>No of Listings</th>
+                            <th>No of Adverts</th>
                             <th>Join Date</th>
                             <th></th>
                         </tr>
@@ -29,11 +29,11 @@
                             <?php $ids[$i + 1] = $b->user->id ?>
                             <td>{{$i + 1}}</td>
                             <td>{{ $b->user->fullName }}</td>
-                            <td>{{ ucwords($b->user->role->name) }}</td>
                             <td>{{ $b->user->email }}</td>
                             <td>{{ $b->user->phone_number }}</td>
                             <td>{{ $b->work_phone }}</td>
                             <td>{{ $b->listings == null ? 'N/A' : $b->listings->count() }}</td>
+                            <td>{{ $b->adverts == null ? 'N/A' : $b->adverts->count() }}</td>
                             <td>{{ Carbon::parse($b->created_at)->diffForHumans() }}</td>
                             <td>
                                 @if($b->user->status == Config::get('constants.USER_STATUS_BANNED'))

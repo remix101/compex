@@ -271,6 +271,7 @@
             </td>
           </tr>
             @endif
+            <tr></tr>
             @if(isset($url))
           <tr>
             <td class="button">
