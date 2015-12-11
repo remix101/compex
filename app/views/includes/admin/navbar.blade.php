@@ -106,7 +106,7 @@
                                 <a href="{{ url('admin/settings') }}"><i class="fa fa-question-circle"></i> Support</a>
                                 <ul>
                                     <li>
-                                        <a href="{{ url('admin/inbox') }}"><span class="badge">{{ Session::get('message_count') ? Session::get('message_count') : '' }}</span><i class="fa fa-envelope"></i> Inbox</a>
+                                        <a href="{{ url('admin/inbox') }}"><span class="badge">{{ Session::get('message_count') ? ' '.Session::get('message_count').' ' : '' }}</span><i class="fa fa-envelope"></i> Inbox</a>
                                         <a href="{{ url('admin/settings') }}"><i class="fa fa-cog"></i> Settings</a>
                                     </li>
                                 </ul>
@@ -174,7 +174,7 @@
                             <a href="{{ url('admin/settings') }}"><i class="fa fa-question-circle"></i> Support</a>
                             <ul>
                                 <li>
-                                    <a href="{{ url('admin/inbox') }}"><span class="badge">{{ Session::get('message_count') ? Session::get('message_count') : '' }}</span><i class="fa fa-envelope"></i> Inbox</a>
+                                    <a href="{{ url('admin/inbox') }}"><span class="badge">{{ Session::get('message_count') ? ' '.Session::get('message_count').' ' : '' }}</span><i class="fa fa-envelope"></i> Inbox</a>
                                     <a href="{{ url('admin/settings') }}"><i class="fa fa-cog"></i> Settings</a>
                                 </li>
                             </ul>

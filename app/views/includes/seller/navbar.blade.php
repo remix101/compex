@@ -86,7 +86,7 @@
                                 <a href="{{ url('seller/inbox') }}"><i class="fa fa-envelope"></i> Messages</a>
                                 <ul>
                                     <li>
-                                        <a href="{{ url('seller/inbox') }}"><span class="badge">{{ Session::get('message_count') ? Session::get('message_count') : '' }}</span><i class="fa fa-envelope"></i> Inbox</a>
+                                        <a href="{{ url('seller/inbox') }}"><span class="badge">{{ Session::get('message_count') ? ' '.Session::get('message_count').' ' : '' }}</span><i class="fa fa-envelope"></i> Inbox</a>
                                     </li>
                                 </ul>
                             </li>
@@ -158,7 +158,7 @@
                             <a href="{{ url('seller/inbox') }}"><i class="fa fa-envelope"></i> Messages</a>
                             <ul>
                                 <li>
-                                    <a href="{{ url('seller/inbox') }}"><span class="badge">{{ Session::get('message_count') ? Session::get('message_count') : '' }}</span><i class="fa fa-envelope"></i> Inbox</a>
+                                    <a href="{{ url('seller/inbox') }}"><span class="badge">{{ Session::get('message_count') ? ' '.Session::get('message_count').' ' : '' }}</span><i class="fa fa-envelope"></i> Inbox</a>
                                 </li>
                             </ul>
                         </li>
