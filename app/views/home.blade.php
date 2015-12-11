@@ -50,19 +50,19 @@
     <div class="row">
         @foreach(App\Models\Listing::verified()->desc('created_at')->take(4)->get() as $listing)
         <div class="col-sm-6 col-md-3 col-xs-6">
-            <a href="{{ $listing->url }}">
+            <a href="{{ $listing->url }}" title="{{ $listing->heading }}" class="nodecorate">
                 <div class="blog-article">
                     <div class="blog-article-thumbnail" style="background-image: url('{{ $listing->thumbnail }}')">
                     </div><!-- blog-article-thumbnail -->
                     <!-- blog-article-thumbnail -->
                     <div class="blog-article-date">{{ $listing->askingPrice }} USD</div>
                     <div class="blog-article-details blog-article-details_with-more text-center">
-                        <h5><a href="{{ $listing->url }}">{{$listing->heading}}</a>
+                        <h5><span>{{$listing->heading}}</span>
                         </h5>
                         <p>{{ $listing->categoryName }}</p>
                     </div><!-- blog-article-details -->
                     <div class="text-center">
-                        <a class="btn btn-white" href="{{ $listing->url }}">View</a>
+                        <span class="btn btn-white">View</span>
                     </div>
                 </div><!-- blog-article -->
             </a>
@@ -82,7 +82,7 @@
                 </ul>
 
                 <div class="tab-content">
-                    <div class="tab-pane fade" id="tab-6-2">
+                    <div class="tab-pane fade in active" id="tab-6-2">
                         <h4>Search by business listing category</h4>
                         <div class="col-sm-12">
                             <ul class="list-unstyled">
@@ -104,12 +104,12 @@
                             <a class="btn btn-white pull-right" href="{{ url('search?q=') }}">More</a>
                         </div>
                     </div><!-- tab-pane -->
-                    <div class="tab-pane fade in active" id="tab-6-6">
+                    <div class="tab-pane fade" id="tab-6-6">
                         <div class="row">
                             <div class="col-sm-12">
                                 <ul class="list-unstyled">
                                     @foreach(App\Models\SearchQuery::where('results_count','>','0')->groupBy('search_term')->get() as $query)
-                                    <li col-sm-6><a href="{{ url('search?q='.$query->search_term) }}">{{ucwords($query->search_term)}}</a> ({{$query->results_count}})</li>
+                                    <li class="col-sm-6"><a href="{{ url('search?q='.urlencode($query->search_term)) }}">{{ucwords($query->search_term)}}</a> ({{$query->results_count}})</li>
                                     @endforeach
                                 </ul>
                                 <br>
@@ -144,7 +144,7 @@
             <div class="col-md-6 col-lg-4 col-xs-12 mbody">
                 <div class="media">
                     <a class="pull-left" href="{{ url('articles/'.$a->slug) }}">
-                        <img class="media-object" src="{{ $a->featuredImage }}" height="84" width="84">
+                        <img alt="{{ $a->title }}" class="media-object" src="{{ $a->featuredImage }}" height="84" width="84">
                     </a>
                     <div class="media-body">
                         <a href="{{ url('articles/'.$a->slug) }}">

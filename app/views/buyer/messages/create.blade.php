@@ -61,7 +61,7 @@
 
 @section('footerscripts')
 
-{{ HTML::style("assets/css/messages.css") }}
+{{ HTML::style("assets/css/messages.css", ['property' => 'stylesheet']) }}
 
 {{ HTML::script('assets/js/list.min.js') }}
 {{ HTML::style('assets/css/selectize.bootstrap3.css') }}

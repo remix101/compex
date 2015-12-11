@@ -54,9 +54,9 @@
                 <div class="col-xs-10 col-sm-10 col-lg-3 col-md-4">
 
                     <!-- LOGO -->
-                    <div id="logo">
+                    <div class="logo">
                         <a href="{{ url('/') }}">
-                            <img src="{{ url('assets/img/logo.png') }}">
+                            <img src="{{ url('assets/img/logo.png') }}" alt="company logo">
                         </a>
                     </div><!-- logo -->
 
@@ -66,10 +66,10 @@
                     <!-- MENU -->
                     <nav>
 
-                        <a id="mobile-menu-button" href="#"><i class="fa fa-bars"></i></a>
+                        <a class="mobile-menu-button" href="#"><i class="fa fa-bars"></i></a>
 
                         @if(Auth::check())
-                        <ul class="menu clearfix" id="menu">
+                        <ul class="menu clearfix menu-ul">
                             @if(Request::is('buyer/*'))
                             <li>
                                 <a href="{{ url('/') }}"><i class="fa fa-home"></i> Home</a>
@@ -118,7 +118,7 @@
                             @endforeach
                         </ul>
                         @else
-                        <ul class="menu clearfix" id="menu">
+                        <ul class="menu clearfix menu-ul">
                             <li class="dropdown active">
                                 <a href="">Buy a Business</a>
                                 <ul>
@@ -169,9 +169,9 @@
             <div class="col-xs-10 col-sm-10 col-lg-3 col-md-4">
 
                 <!-- LOGO -->
-                <div id="logo">
+                <div class="logo">
                     <a href="{{ url('/') }}">
-                        <img src="{{ url('assets/img/logo.png') }}">
+                        <img src="{{ url('assets/img/logo.png') }}" alt="company logo">
                     </a>
                 </div><!-- logo -->
 
@@ -181,10 +181,10 @@
                 <!-- MENU -->
                 <nav>
 
-                    <a id="mobile-menu-button" href="#"><i class="fa fa-bars"></i></a>
+                    <a class="mobile-menu-button" href="#"><i class="fa fa-bars"></i></a>
 
                     @if(Auth::check())
-                    <ul class="menu clearfix" id="menu">
+                    <ul class="menu clearfix menu-ul">
                         @if(Request::is('buyer/*'))
                         <li>
                             <a href="{{ url('/') }}"><i class="fa fa-home"></i> Home</a>
@@ -233,7 +233,7 @@
                         @endforeach
                     </ul>
                     @else
-                    <ul class="menu clearfix" id="menu">
+                    <ul class="menu clearfix menu-ul">
                         <li class="dropdown active">
                             <a href="">Buy a Business</a>
                             <ul>

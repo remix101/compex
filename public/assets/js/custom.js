@@ -8,7 +8,7 @@
 
     // SHOW/HIDE MOBILE MENU //
     function show_hide_mobile_menu() {
-        $("#mobile-menu-button").on("click", function(e) {
+        $(".mobile-menu-button").on("click", function(e) {
             e.preventDefault();
             $("#mobile-menu").slideToggle(300);
         });	
@@ -18,9 +18,9 @@
     // MOBILE MENU //
     function mobile_menu() {
         if ($(window).width() < 992) {
-            if ($("#menu").length > 0) {
+            if ($(".menu-ul").length > 0) {
                 if ($("#mobile-menu").length < 1) {
-                    $("#menu").clone().attr({
+                    $(".menu-ul").clone().attr({
                         id: "mobile-menu",
                         class: ""
                     }).insertAfter("#header");

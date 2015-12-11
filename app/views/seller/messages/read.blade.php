@@ -86,7 +86,7 @@
         </div>
     </div>
 </div>
-{{ HTML::style("assets/css/messages.css") }}
+{{ HTML::style("assets/css/messages.css", ['property' => 'stylesheet']) }}
 
 @stop
 

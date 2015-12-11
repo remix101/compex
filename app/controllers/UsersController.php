@@ -265,21 +265,32 @@ class UsersController extends BaseController {
             $result = json_decode( $yh->request( 'https://social.yahooapis.com/v1/user/'.$xid[0]['xoauth_yahoo_guid'].'/profile?format=json' ) );
             //$contacts = json_decode( $yh->request( 'https://social.yahooapis.com/v1/user/'.$xid[0]['xoauth_yahoo_guid'].'/contacts?format=json' ), true ); 
             //Log::info($contacts);
-            $usr = User::where('yahoo_guid', '=', $result->profile->guid)->first();
 
-            if($usr == null)
-            {
-                $data = $result->profile;
-                $usr = new User(['yahoo_guid' => $data->guid]);
-                if (isset($data->emails)) {
-                    $email = "";
-                    foreach ($data->emails as $v) {
-                        if (isset($v->primary) && $v->primary) {
-                            $email = (property_exists($v, 'handle')) ? $v->handle : "";
-                            break;
-                        }
+            //try extract email
+            $data = $result->profile;
+            $email = false;
+            if (isset($data->emails)) {
+                foreach ($data->emails as $v) {
+                    if (isset($v->primary) && $v->primary) {
+                        $email = (property_exists($v, 'handle')) ? $v->handle : false;
+                        break;
                     }
-                    $usr->email = $email;
+                }
+            }
+            if($email != false)
+            {
+                $usr = User::where('email', '=', $email)->first();
+            }
+            else
+            {
+                $usr = User::where('yahoo_guid', '=', $result->profile->guid)->first();
+            }
+            if(!$usr)
+            {
+                $usr = new User(['yahoo_guid' => $data->guid]);
+                if($email != false)
+                {
+                    $usr->email = $email; 
                 }
                 $usr->first_name = (property_exists($data, 'givenName')) ? $data->givenName : "";
                 $usr->last_name = (property_exists($data, 'familyName')) ? $data->familyName : "";

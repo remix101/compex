@@ -127,7 +127,7 @@
 @stop
 
 @section('footerscripts')
-{{ HTML::style("vendor/intl-phone/css/intlTelInput.css") }}
+{{ HTML::style("vendor/intl-phone/css/intlTelInput.css", ['property' => 'stylesheet']) }}
 {{ HTML::script("vendor/intl-phone/js/intlTelInput.min.js") }}
 {{ HTML::script("app.js") }}
 

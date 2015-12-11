@@ -1,6 +1,6 @@
 @extends((Auth::check() && !Auth::user()->isBuyer()) ? 'layouts.'.$user->role->name : 'layouts.front')
 
-@section('title', 'Viewing Listing : '.$listing->heading . ' | CompanyExchange')
+@section('title', 'Listed for sale : '.$listing->heading . ' | CompanyExchange')
 
 @section('content')
 
@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <h1 class="page-header_business__text">{{ $listing->heading }}</h1>
+                <h1 class="page-header_business__text">For Sale: {{ $listing->heading }}</h1>
             </div><!-- col -->
         </div><!-- row -->
     </div><!-- container -->
@@ -56,7 +56,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <h5>{{ $listing->location }}</h5>
+                            <h6>Location: {{ $listing->location }}</h6>
                             <hr>
                         </div>
                         <div class="col-md-6">
@@ -77,14 +77,16 @@
                                 <li>Business <b>is {{ $listing->relocatable ? '' : 'not '}}</b>relocatable</li>
                             </ul>
                         </div>
+                        <div class="col-md-12">
+                            <ul class="check-list blue mt-20">
+                                @if($listing->expansion_potential != '')
+                                <li>Expansion: {{ $listing->expansion_potential }}</li>
+                                @endif
+                                <li>Reason for selling: <b>{{ $listing->reason }}</b></li>
+                                <li>Owner <b>{{ $listing->partial_sale ? "considers" : "doesn't consider"}} partial sale</b></li>
+                            </ul>
+                        </div>
                     </div>
-                    <ul class="check-list blue mt-20">
-                        @if($listing->expansion_potential != '')
-                        <li>Expansion: {{ $listing->expansion_potential }}</li>
-                        @endif
-                        <li>Reason for selling: <b>{{ $listing->reason }}</b></li>
-                        <li>Owner <b>{{ $listing->partial_sale ? "considers" : "doesn't consider"}} partial sale</b></li>
-                    </ul>
                 </div>
             </div>
             <div class="well">

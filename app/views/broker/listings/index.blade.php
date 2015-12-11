@@ -74,7 +74,7 @@
 {{ HTML::script("assets/js/datatables/extensions/ColReorder/js/dataTables.colReorder.min.js") }}
 {{ HTML::script("assets/js/datatables/extensions/Scroller/js/dataTables.scroller.min.js") }}
 {{ HTML::script("assets/js/datatables/dataTables.bootstrap.js") }}
-{{ HTML::style("assets/js/datatables/dataTables.bootstrap.css") }}
+{{ HTML::style("assets/js/datatables/dataTables.bootstrap.css", ['property' => 'stylesheet']) }}
 
 {{ HTML::script('assets/js/bootstrap-toastr/toastr.min.js') }}
 {{ HTML::style('assets/js/bootstrap-toastr/toastr.min.css') }}

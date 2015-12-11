@@ -5,10 +5,10 @@
 <meta name="description" content="">
 <meta name="keywords" content="business broker,business sales,business for sale,businesses">
 
-{{ HTML::style("assets/css/bootstrap.css") }}
-{{ HTML::style("assets/css/site.css") }}
-{{ HTML::style("assets/css/custom.css") }}
-{{ HTML::style("assets/css/pages-style.css") }}
-{{ HTML::style("assets/css/blue.css") }}
-{{ HTML::style("assets/css/jquery.fancybox.css") }}
-{{ HTML::style("assets/css/style.css") }}
+{{ HTML::style("assets/css/bootstrap.css", ['property' => 'stylesheet']) }}
+{{ HTML::style("assets/css/site.css", ['property' => 'stylesheet']) }}
+{{ HTML::style("assets/css/custom.css", ['property' => 'stylesheet']) }}
+{{ HTML::style("assets/css/pages-style.css", ['property' => 'stylesheet']) }}
+{{ HTML::style("assets/css/blue.css", ['property' => 'stylesheet']) }}
+{{ HTML::style("assets/css/jquery.fancybox.css", ['property' => 'stylesheet']) }}
+{{ HTML::style("assets/css/style.css", ['property' => 'stylesheet']) }}

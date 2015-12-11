@@ -192,6 +192,7 @@ Route::group(['before' => 'auth'], function(){
         Route::post('adverts/create', 'AdvertsController@store');
         Route::post('feature', 'AdvertsController@store');
         Route::get('adverts/edit/{advert}', 'AdvertsController@edit');
+        Route::post('adverts/edit/{advert}', 'AdvertsController@update');
         Route::post('adverts/update/{advert}', 'AdvertsController@update');
         Route::get('adverts/preview/{advert}', 'AdvertsController@preview');
         Route::delete('adverts/delete/{advert}', 'AdvertsController@delete');

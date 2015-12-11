@@ -3,7 +3,7 @@
     <head>
         @include('includes.front.head')
     </head>
-    <body cz-shortcut-listen="true">
+    <body>
 
         <div class="wrap">
 

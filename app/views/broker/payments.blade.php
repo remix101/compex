@@ -94,7 +94,7 @@
 {{ HTML::script("//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js") }}
 {{ HTML::script("assets/js/datatables/buttons.bootstrap.min.js") }}
 {{ HTML::script("assets/js/datatables/dataTables.bootstrap.js") }}
-{{ HTML::style("assets/js/datatables/dataTables.bootstrap.css") }}
+{{ HTML::style("assets/js/datatables/dataTables.bootstrap.css", ['property' => 'stylesheet']) }}
 
 
 <script type="text/javascript">

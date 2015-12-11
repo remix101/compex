@@ -25,7 +25,7 @@
                                 <!-- Member details list item -->
                                 <div class="list-item">
                                     <h3 class="pull-left"><i class="fa fa-female"></i> Country</h3>
-                                    <span class="pull-right minfo">{{ $user->profile ? $user->profile->getCountry->name : 'Not provided' }}</span>
+                                    <span class="pull-right minfo">{{ $user->profile->getCountry ? $user->profile->getCountry->name : 'Not provided' }}</span>
                                     <div class="clearfix"></div>
                                 </div>
                             </li>

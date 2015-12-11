@@ -113,7 +113,7 @@ class Listing extends BaseModel implements SluggableInterface
     public function getSalesRevenueAttribute()
     {
         return $this->yearly_revenue ? $this->getYearlyRevenue->text : 
-        ($this->yearly_revenue_exact ? $this->yearly_revenue_exact : 'Undisclosed');
+        ($this->yearly_revenue_exact ? price_to_string($this->yearly_revenue_exact) : 'Undisclosed');
     }
 
     public function cashFlow()
@@ -124,7 +124,7 @@ class Listing extends BaseModel implements SluggableInterface
     public function getCashFlowTextAttribute()
     {
         return $this->cash_flow ? $this->cashFlow->text : 
-        ($this->cash_flow_exact ? $this->cash_flow_exact : 'Undisclosed');
+        ($this->cash_flow_exact ? price_to_string($this->cash_flow_exact) : 'Undisclosed');
     }
 
     public function operationCost()
@@ -135,7 +135,7 @@ class Listing extends BaseModel implements SluggableInterface
     public function getOperationCostTextAttribute()
     {
         return $this->operation_cost ? $this->operationCost->text : 
-        ($this->operation_cost_exact ? $this->operation_cost_exact : 'Undisclosed');
+        ($this->operation_cost_exact ? price_to_string($this->operation_cost_exact) : 'Undisclosed');
     }
 
     public function getCategory()
@@ -161,7 +161,7 @@ class Listing extends BaseModel implements SluggableInterface
     public function getAskingPriceAttribute()
     {
         return $this->ask_price ? $this->askPrice->text : 
-        ($this->ask_price_exact ? $this->ask_price_exact : 'Undisclosed');
+        ($this->ask_price_exact ? price_to_string($this->ask_price_exact) : 'Undisclosed');
     }
 
     public function getAssetWorthAttribute()

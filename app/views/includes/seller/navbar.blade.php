@@ -49,9 +49,9 @@
                 <div class="col-xs-10 col-sm-10 col-lg-3 col-md-4">
 
                     <!-- LOGO -->
-                    <div id="logo">
+                    <div class="logo">
                         <a href="{{ url('/') }}">
-                            <img src="{{ url('assets/img/logo.png') }}">
+                            <img src="{{ url('assets/img/logo.png') }}" alt="company logo">
                         </a>
                     </div><!-- logo -->
 
@@ -59,8 +59,8 @@
                 <div class="col-xs-2 col-sm-2 col-lg-9 col-md-8">
                     <!-- MENU -->
                     <nav>
-                        <a id="mobile-menu-button" href="#"><i class="fa fa-bars"></i></a>
-                        <ul class="menu clearfix" id="menu">
+                        <a class="mobile-menu-button" href="#"><i class="fa fa-bars"></i></a>
+                        <ul class="menu clearfix menu-ul">
                             @if(Request::is('seller/*'))
                             <li>
                                 <a href="{{ url('/') }}"><i class="fa fa-home"></i> Home</a>
@@ -120,9 +120,9 @@
         <div class="row">
             <div class="col-xs-10 col-sm-10 col-lg-3 col-md-4">
                 <!-- LOGO -->
-                <div id="logo">
+                <div class="logo">
                     <a href="{{ url('/') }}">
-                        <img src="{{ url('assets/img/logo.png') }}">
+                        <img src="{{ url('assets/img/logo.png') }}" alt="company logo">
                     </a>
                 </div><!-- logo -->
             </div><!-- col -->
@@ -130,9 +130,9 @@
 
                 <!-- MENU -->
                 <nav>
-                    <a id="mobile-menu-button" href="#"><i class="fa fa-bars"></i></a>
+                    <a class="mobile-menu-button" href="#"><i class="fa fa-bars"></i></a>
 
-                    <ul class="menu clearfix" id="menu">
+                    <ul class="menu clearfix menu-ul">
                         @if(Request::is('seller/*'))
                         <li>
                             <a href="{{ url('/') }}"><i class="fa fa-home"></i> Home</a>

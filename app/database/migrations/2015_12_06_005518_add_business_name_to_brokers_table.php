@@ -14,7 +14,11 @@ class AddBusinessNameToBrokersTable extends Migration {
 	{
 		Schema::table('brokers', function(Blueprint $table)
 		{
-			$table->string('business_name', 120);
+			$table->string('business_name', 120)->nullable();
+		});
+		Schema::table('sellers', function(Blueprint $table)
+		{
+			$table->string('business_name', 120)->nullable();
 		});
 	}
 
@@ -27,6 +31,10 @@ class AddBusinessNameToBrokersTable extends Migration {
 	public function down()
 	{
 		Schema::table('brokers', function(Blueprint $table)
+		{
+			$table->dropColumn('business_name');
+		});
+		Schema::table('sellers', function(Blueprint $table)
 		{
 			$table->dropColumn('business_name');
 		});

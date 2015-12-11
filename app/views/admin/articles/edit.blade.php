@@ -81,7 +81,7 @@
 
 @section('footerscripts')
 
-{{ HTML::style("assets/css/bootstrap-wysihtml5.css") }}
+{{ HTML::style("assets/css/bootstrap-wysihtml5.css", ['property' => 'stylesheet']) }}
 {{ HTML::script("assets/js/wysihtml5-0.3.0.js") }}
 {{ HTML::script("assets/js/bootstrap-wysihtml5.js") }}
 

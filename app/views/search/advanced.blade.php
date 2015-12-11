@@ -125,16 +125,16 @@
         @if(count($results))
         @foreach($results as $listing)
         <div class="col-sm-6 col-md-3 col-xs-12">
-            <a href="{{ $listing->url }}">
+            <a href="{{ $listing->url }}" title="{{ $listing->heading }}" class="nodecorate">
                 <div class="blog-article">
                     <div class="blog-article-thumbnail" style="background-image: url('{{ $listing->thumbnail }}')">
                     </div><!-- blog-article-thumbnail -->
                     <div class="blog-article-date">${{$listing->askingPrice}}</div>
                     <div class="blog-article-details blog-article-details_with-more text-center">
-                        <h5><a href="{{ $listing->url }}">{{ $listing->heading }}</a></h5>
-                        <p><a href="#">{{ $listing->location }}</a></p>
+                        <h5><span>{{ $listing->heading }}</span></h5>
+                        <p><span>{{ $listing->location }}</span></p>
                     </div><!-- blog-article-details -->
-                    <div class="text-center"><a class="btn btn-white" href="{{ $listing->url }}">View</a></div>
+                    <div class="text-center"><span class="btn btn-white">View</span></div>
                 </div><!-- blog-article -->
             </a>
         </div>

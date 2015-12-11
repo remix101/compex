@@ -158,11 +158,11 @@ class User extends App\Models\BaseModel implements UserInterface, RemindableInte
     {
         if($this->isSeller())
         {
-            return $this->seller->listings();
+            return $this->seller ? $this->seller->listings() : null;
         }
         elseif($this->isBroker())
         {
-            return $this->broker->listings();
+            return $this->broker ? $this->broker->listings() : null;
         }
         return $this->null;
     }
@@ -171,11 +171,11 @@ class User extends App\Models\BaseModel implements UserInterface, RemindableInte
     {
         if($this->isBuyer())
         {
-            return $this->buyer->adverts();
+            return $this->buyer ? $this->buyer->adverts() : null;
         }
         elseif($this->isBroker())
         {
-            return $this->broker->adverts();
+            return $this->broker ? $this->broker->adverts() : null;
         }
         return $this->null;
     }

@@ -91,14 +91,15 @@
     </div><!-- container -->
 </div>
 
-{{ HTML::style("assets/css/font-awesome.min.css") }}
-{{ HTML::style("assets/css/sweet-alert.css") }}
+{{ HTML::style("assets/css/font-awesome.min.css", ['property' => 'stylesheet']) }}
+{{ HTML::style("assets/css/sweet-alert.css", ['property' => 'stylesheet']) }}
 {{ HTML::script("assets/js/jquery.js") }}
 {{ HTML::script("assets/js/custom.js") }}
 {{ HTML::script("assets/js/bootstrap.min.js") }}
 {{ HTML::script("assets/js/jquery.fancybox.pack.js") }}
 {{ HTML::script("assets/js/jquery.validate.min.js") }}
 {{ HTML::script("assets/js/sweet-alert.min.js") }}
+{{ HTML::script('assets/js/flowtype.js') }}
 
 <!-- Include this after the sweet alert js file -->
 @include('sweet::alert')
@@ -163,17 +164,6 @@
 </script>
 @endif
 
-<style>
-    .atext{
-        max-height: 60px;
-        line-height: 1.5em;
-        margin-top: 6px!important;
-    }
-    .mbody{
-        max-height: 74px;
-        margin: 12px 0px;
-    }
-</style>
 <script type="text/javascript">
     $('.blog-article-details h5').flowtype({
         minimum : 500,
