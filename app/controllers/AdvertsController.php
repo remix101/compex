@@ -77,12 +77,12 @@ class AdvertsController extends BaseController {
     public function create()
     {
         $user = Auth::user();
-        if($user->is(Config::get('constants.ROLE_BUYER')))
+        if($user->isBuyer() || $user->isBroker())
         {
             return View::make(Auth::user()->role->name. '.adverts.create');
         }
         return View::make('errors.message')
-            ->withMessage('You must have a buyer account to create a business wanted advert.')
+            ->withMessage('You must have a buyeror broker account to create a business wanted advert.')
             ->withButton(['title' => 'Create a Buyer Account', 'href' => url('register')]);
     }
 
@@ -108,7 +108,18 @@ class AdvertsController extends BaseController {
         {
             $advert->fill($data);
             $user = Auth::user();
-            $advert->buyer_id = $user->buyer->id;
+            if($user->isBuyer())
+            {
+                $advert->buyer_id = $user->buyer->id;
+            }
+            elseif($user->isBroker())
+            {
+                $advert->broker_id = $user->broker->id;
+            }
+            else{
+                Auth::logout();
+                return Redirect::to('/');
+            }
             $advert->save();
             Alert::success('Your advert has been created successfully. Keep an eye on your inbox for sellers contacting you', 'Congratulations');
 

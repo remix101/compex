@@ -188,8 +188,8 @@ Route::group(['before' => 'auth'], function(){
         Route::get('adverts', 'AdvertsController@index');
         Route::get('adverts/pending', 'AdvertsController@pending');
         Route::get('adverts/create', 'AdvertsController@create');
-        Route::get('feature', 'AdvertsController@create');
         Route::post('adverts/create', 'AdvertsController@store');
+        Route::get('feature', 'AdvertsController@create');
         Route::post('feature', 'AdvertsController@store');
         Route::get('adverts/edit/{advert}', 'AdvertsController@edit');
         Route::post('adverts/edit/{advert}', 'AdvertsController@update');
@@ -212,6 +212,18 @@ Route::group(['before' => 'auth'], function(){
         Route::get('listings/preview/{listing}', 'ListingsController@preview');
         Route::delete('listings/delete/{listing}', 'ListingsController@delete');
         Route::get('listings/{listing}', 'ListingsController@show');
+        Route::get('feature', 'AdvertsController@create');
+        Route::post('feature', 'AdvertsController@store');
+        Route::get('adverts', 'AdvertsController@index');
+        Route::get('adverts/pending', 'AdvertsController@pending');
+        Route::get('adverts/create', 'AdvertsController@create');
+        Route::post('adverts/create', 'AdvertsController@store');
+        Route::get('adverts/edit/{advert}', 'AdvertsController@edit');
+        Route::post('adverts/update/{advert}', 'AdvertsController@update');
+        Route::post('adverts/edit/{advert}', 'AdvertsController@update');
+        Route::get('adverts/preview/{advert}', 'AdvertsController@preview');
+        Route::delete('adverts/delete/{advert}', 'AdvertsController@delete');
+        Route::get('adverts/{advert}', 'AdvertsController@show');
     });
 
     Route::group(['prefix' => 'broker'], function(){
@@ -227,6 +239,18 @@ Route::group(['before' => 'auth'], function(){
         Route::get('listings/preview/{listing}', 'ListingsController@preview');
         Route::delete('listings/delete/{listing}', 'ListingsController@delete');
         Route::get('listings/{listing}', 'ListingsController@show');
+        Route::get('feature', 'AdvertsController@create');
+        Route::post('feature', 'AdvertsController@store');
+        Route::get('adverts', 'AdvertsController@index');
+        Route::get('adverts/pending', 'AdvertsController@pending');
+        Route::get('adverts/create', 'AdvertsController@create');
+        Route::post('adverts/create', 'AdvertsController@store');
+        Route::get('adverts/edit/{advert}', 'AdvertsController@edit');
+        Route::post('adverts/update/{advert}', 'AdvertsController@update');
+        Route::post('adverts/edit/{advert}', 'AdvertsController@update');
+        Route::get('adverts/preview/{advert}', 'AdvertsController@preview');
+        Route::delete('adverts/delete/{advert}', 'AdvertsController@delete');
+        Route::get('adverts/{advert}', 'AdvertsController@show');
     });
 
     Route::get('log', 'Rap2hpoutre\LaravelLogViewer\LogViewerController@index');

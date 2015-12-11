@@ -100,9 +100,10 @@ class MessagesController extends BaseController {
         if(!Auth::check() && isset($data['email']))
         {
             $result = $this->registerBuyer($data);
+            Log::info($result);
             if(is_array($result))
             {
-                return View::make('users.fastcomposer')->withErrors($result); 
+                return View::make('users.fastcomposer')->withErrors($result);
             }
         }
 

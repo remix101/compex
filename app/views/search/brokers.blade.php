@@ -53,4 +53,10 @@
 
 @section('footerscripts')
 
+<script type="text/javascript">
+    $('#conselect').on('change', function(){
+        location.href = "{{ url('brokers') }}" + '?country=' + $(this).val();
+    });
+</script>
+
 @stop

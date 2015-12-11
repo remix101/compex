@@ -23,8 +23,11 @@ class BrokersController extends BaseController {
     public function index()
     {
         $q = Input::get('q');
-
-        if(trim($q) != '')
+        if(Input::get('country'))
+        {
+            $results = Broker::where('country', '=', Input::get('country'))->paginate(10);
+        }
+        elseif(trim($q) == '')
         {
             $results = Broker::paginate(10);
         }

@@ -36,11 +36,16 @@ class Advert extends BaseModel implements SluggableInterface
     /**
     * The properties of this model that can be filled automatically
     */
-    protected $fillable = ['description', 'buyer_id', 'category', 'heading', 'country', 'asking_price'];
+    protected $fillable = ['description', 'broker_id', 'buyer_id', 'category', 'heading', 'country', 'asking_price'];
 
     public function buyer()
     {
         return $this->belongsTo('App\Models\Buyer', 'buyer_id');
+    }
+
+    public function broker()
+    {
+        return $this->belongsTo('App\Models\Broker', 'broker_id');
     }
 
     public function askingPrice()

@@ -70,7 +70,7 @@
                             </td>
                             <td class="table-status">
                                 <a href="javascript:;" class="bcontact" data-owner="{{ $advert->user->id }}" data-id="{{ $advert->id }}" data-toggle="modal" data-target="#fastcontact">
-                                    <i class="fa fa-envelope font-green-soft"></i> Contact Buyer
+                                    <i class="fa fa-envelope font-green-soft"></i> Contact User
                                 </a>
                             </td>
                         </tr>

@@ -9,6 +9,19 @@
         </form>
     </div>
     <div class="widget widget-categories">
+        <h6 class="widget-title">Filter By Country</h6>
+        <ul>
+            <li>
+                Country: <select id="conselect" class="form-control">
+                <option value="" selected>Any</option>
+                @foreach(App\Models\Country::all()->sortByDesc('Listings') as $c)
+                <option value="{{$c->id}}"{{ (Input::get("country") && Input::get("country") == $c->id) ? 'selected' : '' }}>{{$c->name}}</option>
+                @endforeach
+                </select>
+            </li>
+        </ul>
+    </div>
+    <div class="widget widget-categories">
         <h6 class="widget-title">Top Brokers</h6>
         <ul>
             @foreach(App\Models\Broker::with('Listings')->take(5)->get()->sortByDesc('Listings') as $b)

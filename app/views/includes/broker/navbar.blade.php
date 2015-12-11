@@ -83,6 +83,13 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
+                                <a href="{{ url('broker/adverts') }}"><i class="fa fa-bars"></i> My Adverts</a>
+                                <ul>
+                                    <li><a href="{{ url('broker/feature') }}">Create New</a></li>
+                                    <li><a href="{{ url('broker/adverts') }}">All Adverts</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
                                 <a href="{{ url('broker/inbox') }}"><i class="fa fa-envelope"></i> Messages</a>
                                 <ul>
                                     <li>
@@ -152,6 +159,13 @@
                                 <li><a href="{{ url('broker/listings/pending') }}">Pending Listings</a></li>
                                 <li><a href="{{ url('broker/listings/approved') }}">Approved Listings</a></li>
                                 <li><a href="{{ url('broker/listings') }}">All Listings</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="{{ url('broker/adverts') }}"><i class="fa fa-bars"></i> My Adverts</a>
+                            <ul>
+                                <li><a href="{{ url('broker/feature') }}">Create New</a></li>
+                                <li><a href="{{ url('broker/adverts') }}">All Adverts</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
