@@ -44,7 +44,7 @@
             <div class="message-answer">
                 <img src="{{ url(Auth::user()->getPhoto()) }}" alt="..." class="hidden-xs">
                 <form action='{{ url("inbox/compose") }}' method="post" role="form">
-                    <input type="hidden" id="pm_receiver" name="receiver_user_id" value="{{ isset($usr) ? $usr->id : '1' }}">
+                    <input type="hidden" id="pm_receiver" name="recipient_id" value="{{ isset($usr) ? $usr->id : '1' }}">
                     <div class="form-group">                    
                         <label for="message" class="sr-only">Message</label>
                         <textarea class="form-control" rows="5" name="message" id="message" placeholder="Write a message..."></textarea>

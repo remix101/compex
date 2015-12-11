@@ -9,8 +9,8 @@ class Message extends BaseModel {
  
     protected $rules = [
         'create' =>[
-            'sender_id' => 'exists:users,id',
-            'recipient_id' => 'exists:users,id',
+            'sender_id' => 'required|exists:users,id',
+            'recipient_id' => 'required|exists:users,id',
             'message' => 'required|min:2',
         ],
         'update' =>[

@@ -60,7 +60,7 @@ class User extends App\Models\BaseModel implements UserInterface, RemindableInte
      */
     protected $rules = [
         'create' => [
-            'email' => 'required|unique:users',
+            'email' => 'required|email|unique:users',
             'first_name' => 'min:2|required',
             'password' => 'confirmed',
             'last_name' => 'min:3',
