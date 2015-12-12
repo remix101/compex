@@ -16,7 +16,8 @@
         "fuhrmann/larageo-plugin": "dev-master",
         "cviebrock/eloquent-sluggable": "~2",
         "fzaninotto/faker": "~1",
-        "nicolaslopezj/searchable": "1.*"
+        "nicolaslopezj/searchable": "1.*",
+        "phpunit/phpunit": "^5.1"
     },
     "autoload": {
         "classmap": [
