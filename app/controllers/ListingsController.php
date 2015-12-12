@@ -77,7 +77,7 @@ class ListingsController extends BaseController {
                 unset($data[$key]);
             }
         }
-        $results = new Listing();
+        $results = Listing::verified();
         if(isset($data['country']))
         {
             $results = $results->where('country', '=', $data['country']);
@@ -119,7 +119,7 @@ class ListingsController extends BaseController {
                 unset($data[$key]);
             }
         }
-        $results = new Listing;
+        $results = Listing::verified();
         if(isset($data['ask_price']))
         {
             $results = $results->where('ask_price', '=', $data['ask_price']);

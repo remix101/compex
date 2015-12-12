@@ -43,7 +43,7 @@
                     </thead>
                     <tbody>
                         <?php $ids = array(); ?>
-                        @foreach($user->broker->listings()->get() as $i => $l)
+                        @foreach($user->broker->listings()->verified()->get() as $i => $l)
                         <tr>
                             <?php $ids[$i + 1] = $l->id ?>
                             <td>{{ $i + 1 }}</td>

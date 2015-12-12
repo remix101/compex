@@ -48,7 +48,7 @@
         </div><!-- col -->
     </div><!-- row -->
     <div class="row">
-        @foreach(App\Models\Listing::desc('created_at')->take(4)->get() as $listing)
+        @foreach(App\Models\Listing::verified()->desc('created_at')->take(4)->get() as $listing)
         <div class="col-sm-6 col-md-3 col-xs-6">
             <a href="{{ $listing->url }}" title="{{ $listing->heading }}" class="nodecorate">
                 <div class="blog-article">
