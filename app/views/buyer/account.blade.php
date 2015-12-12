@@ -7,25 +7,25 @@
 <div class="profile">
     <form id="account-update" class="form-horizontal" action="{{ url('account') }}" method="post" enctype="multipart/form-data">
         <div class="container">
-            @if(isset($success))
-            <div class="alert alert-dismissible admission alert-success" role="alert">
-                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true"><i class="fa fa-times-circle"></i></span><span class="sr-only">Close</span></button>
-                Account profile updated successfully.
-            </div>
-            @else
-            @if(isset($errors))
-            @foreach ($errors->all() as $e)
-            <div class="alert alert-dismissible alert-danger" role="alert">
-                <button type="button" class="close" data-dismiss="danger"><span aria-hidden="true"><i class="fa fa-times-circle"></i></span><span class="sr-only">Close</span></button>
-                {{ $e }}
-            </div>
-            @endforeach
-            @endif
-            @endif
             <div class="col-md-12">
                 <br>
                 <h3>Account Profile</h3>
                 <hr>
+                @if(isset($success))
+                <div class="alert alert-dismissible admission alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true"><i class="fa fa-times-circle"></i></span><span class="sr-only">Close</span></button>
+                    Account profile updated successfully.
+                </div>
+                @else
+                @if(isset($errors))
+                @foreach ($errors->all() as $e)
+                <div class="alert alert-dismissible alert-danger" role="alert">
+                    <button type="button" class="close" data-dismiss="danger"><span aria-hidden="true"><i class="fa fa-times-circle"></i></span><span class="sr-only">Close</span></button>
+                    {{ $e }}
+                </div>
+                @endforeach
+                @endif
+                @endif
                 <div class="col-md-6">
                     <p>Please edit to change your contact information</p>
                     <div class="form-group">

@@ -215,6 +215,11 @@ label.btn-default {
     display: table;
 }
 
+.gallery-item img {
+    height: 100%;
+    object-fit: cover;
+}
+
 .full-section.homepage-hero {
     background: url("/assets/img/homepage.jpg") no-repeat center bottom;
     background-size: cover;

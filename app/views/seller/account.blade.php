@@ -7,24 +7,24 @@
 <div class="profile">
     <form id="account-update" class="form-horizontal" action="{{ url('account') }}" method="post" enctype="multipart/form-data">
         <div class="container">
-            @if(isset($success))
-            <div class="alert alert-dismissible admission alert-success" role="alert">
-                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true"><i class="fa fa-times-circle"></i></span><span class="sr-only">Close</span></button>
-                Account profile updated successfully.
-            </div>
-            @else
-            @if(isset($errors))
-            @foreach ($errors->all() as $e)
-            <div class="alert alert-dismissible alert-danger" role="alert">
-                <button type="button" class="close" data-dismiss="danger"><span aria-hidden="true"><i class="fa fa-times-circle"></i></span><span class="sr-only">Close</span></button>
-                {{ $e }}
-            </div>
-            @endforeach
-            @endif
-            @endif
             <div class="col-md-12">
                 <br>
                 <h3>Account Profile</h3>
+                @if(isset($success))
+                <div class="alert alert-dismissible admission alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true"><i class="fa fa-times-circle"></i></span><span class="sr-only">Close</span></button>
+                    Account profile updated successfully.
+                </div>
+                @else
+                @if(isset($errors))
+                @foreach ($errors->all() as $e)
+                <div class="alert alert-dismissible alert-danger" role="alert">
+                    <button type="button" class="close" data-dismiss="danger"><span aria-hidden="true"><i class="fa fa-times-circle"></i></span><span class="sr-only">Close</span></button>
+                    {{ $e }}
+                </div>
+                @endforeach
+                @endif
+                @endif
                 <p>Please edit to change your contact information</p>
                 <hr>
                 <div class="col-md-6">
@@ -56,9 +56,11 @@
                         </div>
                     </div>
                     <div class="form-group required">
-                        <label class="control-label" for="bname">Business/Company Name</label>
-                        <input type="text" id="bname" class="form-control" value="{{ $user->seller->business_name }}" name="business_name" placeholder="Please enter the name of your company/business" required>
-                        <p class="help-block help-block-error"></p>
+                        <label class="control-label col-md-4" for="bname">Business/Company Name</label>
+                        <div class="col-md-8">
+                            <input type="text" id="bname" class="form-control" value="{{ $user->seller->business_name }}" name="business_name" placeholder="Please enter the name of your company/business" required>
+                            <p class="help-block help-block-error"></p>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 control-label">Work Phone</label>
@@ -100,7 +102,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Email</label>
                         <div class="col-md-8">
-                            <input class="form-control has-dark-background" disabled id="email" placeholder="Email" type="email" required="" value="{{$user->email}}">
+                            <input class="form-control has-dark-background" id="email" placeholder="Email" type="email" required="" value="{{$user->email}}">
                         </div>
                     </div>
                     <div class="form-group">

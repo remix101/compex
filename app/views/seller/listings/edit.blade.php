@@ -338,7 +338,7 @@
 
 <script type="text/javascript">
 
-    $('.pthumb-container .remove').on('click', function(e){
+    $(document).on('click', '.pthumb-container .remove', function(e){
         e.preventDefault();        
         var deleter = $(this);
         swal({
@@ -356,20 +356,33 @@
         });
     });
 
+    var storedFiles = [];
+    
     //bind the function to the input
     document.getElementById("photos").addEventListener("change",previewImages,false);
 
-    function previewImages(){
-        var fileList = this.files;
-        var anyWindow = window.URL || window.webkitURL;
-        for(var i = 0; i < fileList.length; i++){
-            //get a blob to work with
-            var objectUrl = anyWindow.createObjectURL(fileList[i]);
-            // for the next line to work, you need something class="preview-area" in your html
-            $('.preview-area').append('<div class="pthumb-container"><img class="pthumb" src="' + objectUrl + '" /></div>');
-            // get rid of the blob
-            window.URL.revokeObjectURL(fileList[i]);
-        }
+    function previewImages(e){
+        
+        //remove all new image uploads from preview
+        $('.nfile').remove();
+        
+        var files = e.target.files;
+        var filesArr = Array.prototype.slice.call(files);
+        
+        filesArr.forEach(function(f) {			
+
+            if(!f.type.match("image.*")) {
+                return;
+            }
+            //storedFiles.push(f);
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var html = '<div class="nfile pthumb-container"><img src="' + e.target.result + '" class="pthumb" data-file="'+f.name+'"/></div>';
+                $('.preview-area').append(html);
+            }
+            reader.readAsDataURL(f); 
+        });
     }
 
 </script>

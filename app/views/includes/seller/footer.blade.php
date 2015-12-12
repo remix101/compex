@@ -92,14 +92,18 @@
 </div>
 
 {{ HTML::style("assets/css/font-awesome.min.css", ['property' => 'stylesheet']) }}
-{{ HTML::style("assets/css/sweet-alert.css", ['property' => 'stylesheet']) }}
 {{ HTML::script("assets/js/jquery.js") }}
 {{ HTML::script("assets/js/custom.js") }}
 {{ HTML::script("assets/js/bootstrap.min.js") }}
 {{ HTML::script("assets/js/jquery.fancybox.pack.js") }}
 {{ HTML::script("assets/js/jquery.validate.min.js") }}
-{{ HTML::script("assets/js/sweet-alert.min.js") }}
 {{ HTML::script('assets/js/flowtype.js') }}
+{{ HTML::style("assets/css/sweet-alert.css", ['property' => 'stylesheet']) }}
+{{ HTML::script("assets/js/sweet-alert.min.js") }}
+<![if IE]>
+{{ HTML::script('assets/js/polyfill.object-fit.min.js') }}
+{{ HTML::style('assets/css/polyfill.object-fit.min.css', ['property' => 'stylesheet']) }}
+<![endif]>
 
 <!-- Include this after the sweet alert js file -->
 @include('sweet::alert')

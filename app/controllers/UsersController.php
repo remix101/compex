@@ -148,7 +148,7 @@ class UsersController extends BaseController {
         $code = Input::get( 'code' );
 
         // get google service
-        $googleService = OAuth::consumer( 'Google' );
+        $googleService = OAuth::consumer( 'Google', url('auth/google'));
 
         //https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read https://www.google.com/m8/feeds/
 
@@ -318,7 +318,7 @@ class UsersController extends BaseController {
         }
     }
 
-    private function registerAndWelcomeUser($data, $usr, $account)
+    private function registerAndWelcomeUser($data, $usr, $account, $additional = "")
     {
         $data = (array) $data;
         if(isset($data['email']))
@@ -349,6 +349,7 @@ class UsersController extends BaseController {
                 $message->to($email);
                 $message->subject('Welcome to CompanyExchange');
             });
+            Alert::success("Welcome to CompanyExchange. $additional", 'Congratulations');
         }
         Auth::loginUsingId($usr->id);
     }
@@ -358,7 +359,7 @@ class UsersController extends BaseController {
         // get data from input
         $code = Input::get( 'code' );
 
-        $linkedinService = OAuth::consumer( 'Linkedin' );
+        $linkedinService = OAuth::consumer( 'Linkedin', url('auth/linkedin'));
 
 
         if ( !empty( $code ) ) {
@@ -506,6 +507,7 @@ class UsersController extends BaseController {
                 if($role_id == Config::get('constants.ROLE_BUYER'))
                 {
                     Auth::loginUsingId($u->id);
+                    Alert::success('Welcome to CompanyExchange. Please feel free to browse through our listings and contact sellers you would like to buy from.', 'Congratulations');
                     return Redirect::to('search?q=')->withSuccess("Welcome $u->first_name. Use the form on the left to search for listed businesses or browse the most recent listings below");
                 }
                 return Redirect::to('login')->withSuccess('Registration successful. Please check email to activate your account');
@@ -559,10 +561,20 @@ class UsersController extends BaseController {
                 unset($data['password']);
             }
             $u->update($data);
-            $b = $u->buyer;
-            if($b != null && $b->validate($data, 'update'))
+            $account = $u->buyer;
+            if($account != null && $account->validate($data, 'update'))
             {
-                $b->update($data);
+                $account->update($data);
+            }
+            $account = $u->broker;
+            if($account != null && $account->validate($data, 'update'))
+            {
+                $account->update($data);
+            }
+            $account = $u->seller;
+            if($account != null && $account->validate($data, 'update'))
+            {
+                $account->update($data);
             }
             if($pupdated)
             {

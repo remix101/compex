@@ -22,6 +22,15 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Request;
 
 class AdminController extends BaseController {
+    
+    public function __construct()
+    {
+        if(Auth::check() && !Auth::user()->isAdmin())
+        {
+            Auth::logout();
+            return Redirect::to('/');
+        }
+    }
 
     public function dashboard()
     {
@@ -235,7 +244,7 @@ class AdminController extends BaseController {
 
     public function banUser($user)
     {
-        $user->status = 2;
+        $user->status = Config::get('constants.USER_STATUS_BANNED');
         $user->save();
         if(Request::ajax())
         {
@@ -247,7 +256,7 @@ class AdminController extends BaseController {
 
     public function unbanUser($user)
     {
-        $user->status = 1;
+        $user->status = Config::get('constants.USER_STATUS_VERIFIED');
         $user->save();
         if(Request::ajax())
         {

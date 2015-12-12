@@ -90,6 +90,11 @@ class User extends App\Models\BaseModel implements UserInterface, RemindableInte
         return $this->role_id  == intval(Config::get('constants.ROLE_BROKER'));
     }
 
+    public function isAdmin()
+    {
+        return $this->role_id  == intval(Config::get('constants.ROLE_ADMIN'));
+    }
+
     public function role()
     {
         return $this->belongsTo('App\Models\Role', 'role_id');

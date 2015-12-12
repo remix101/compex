@@ -1,6 +1,10 @@
 
 /* Inbox */
 
+.pm-unread{
+   background: #eeeef5;
+}
+
 .pm-search {
     background: #F5F5F5;
     border-top: 1px solid #DDD;
@@ -17,6 +21,7 @@
 }
 .pm-list > ul > li {
     padding: 15px;
+    margin: 2px 0px;
     border-bottom: 1px solid #EEE;
 }
 .pm-list > ul > li:hover {

@@ -35,7 +35,7 @@
                 <ul class="list">
                     @foreach($messages as $msg)
                     <!-- Message dialog -->
-                    <li>
+                    <li {{ $msg->hasUnread ? 'class="pm-unread"' : "" }}>
                         <p class="col-md-4 text-muted">
                             <?php $uid = Auth::user()->id; ?>
                             @if($msg->sender_id === $uid)

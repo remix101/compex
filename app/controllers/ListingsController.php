@@ -77,7 +77,7 @@ class ListingsController extends BaseController {
                 unset($data[$key]);
             }
         }
-        $results = Listing::verified();
+        $results = new Listing();
         if(isset($data['country']))
         {
             $results = $results->where('country', '=', $data['country']);
@@ -119,7 +119,7 @@ class ListingsController extends BaseController {
                 unset($data[$key]);
             }
         }
-        $results = Listing::verified();
+        $results = new Listing;
         if(isset($data['ask_price']))
         {
             $results = $results->where('ask_price', '=', $data['ask_price']);
@@ -322,7 +322,22 @@ class ListingsController extends BaseController {
         if($listing->validate($data, 'update'))
         {
             $listing->update($data);
-            $files = Input::file('photos');            
+            $listingCount = 0;
+            //delete ignored photos
+            $photosKept = isset($data['photos_kept']) ? $data['photos_kept'] : [];
+            foreach($listing->photos as $photo)
+            {
+                if(!in_array($photo->id, $photosKept))
+                {
+                    $photo->delete();
+                }
+                else
+                {
+                    $listingCount++;
+                }
+            }
+            $files = Input::file('photos');
+            //upload new photos
             foreach($files as $file)
             {
                 if ($file != null && $file->isValid())
@@ -332,19 +347,6 @@ class ListingsController extends BaseController {
                     $file->move(public_path('files/listings/'.$listing->id), $lp->photo_url);
                     $lp->listing()->associate($listing);
                     $lp->save();
-                    Log::info($lp);
-                }
-            }
-            $listingCount = 0;
-            $photosKept = $data['photos_kept'];
-            foreach($listing->photos as $photo)
-            {
-                if(!in_array($photo->id, $photosKept))
-                {
-                    $photo->delete();
-                }
-                else
-                {
                     $listingCount++;
                 }
             }

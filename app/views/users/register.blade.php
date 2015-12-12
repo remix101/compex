@@ -51,7 +51,7 @@
                     </div>
                     <div class="form-group required">
                         <label class="control-label" for="inputEmail">Email</label>
-                        <input type="text" maxlength="50" class="form-control" value="{{Input::old('email')}}" name="email" id="inputEmail" placeholder="Enter an email to use in accessing your account" required>
+                        <input type="text" maxlength="50" class="form-control" value="{{Input::old('email')}}" name="email" type="email" id="inputEmail" placeholder="Enter an email to use in accessing your account" required>
                         <p class="help-block help-block-error"></p>
                     </div>
                     <div class="form-group required">

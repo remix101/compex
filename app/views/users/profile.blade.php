@@ -10,14 +10,13 @@
         <div class="col-md-3">
             <div class="team">
                 <div class="team-member">
-                    <!-- Member image area -->
-                    <div class="img-container">
-                        <!-- image -->
-                        <img class="img-responsive" src="{{ $usr->getPhoto() }}" alt="" />
-                    </div>
-                    <!-- Name -->
-                    <h2>{{ $usr->title . ' ' . $usr->fullName }}</h2>
+                    <h2 style="padding:0px 6px">{{ $usr->title . ' ' . $usr->fullName }}</h2>
                     <hr class="bg-red" />
+                    <div class="text-center">
+                        <h3>
+                            <a class="btn" href="{{ url('inbox/compose/'.$usr->id) }}}"><i class="fa fa-envelope"></i> Contact User</a>
+                        </h3>
+                    </div>
                     <!-- Team member details -->
                     <div class="member-dtls">
                         <ul class="list-unstyled">
@@ -115,7 +114,6 @@
                                 <th>Category</th>
                                 <th>Headline</th>
                                 <th>Description</th>
-                                <th><a href="javascript:;"></a></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -135,11 +133,6 @@
                                     </h5>
                                 </td>
                                 <td class="table-desc"> {{ $advert->description }}</td>
-                                <td class="table-status">
-                                    <a href="javascript:;" class="bcontact" data-owner="{{ $advert->user->id }}" data-id="{{ $advert->id }}" data-toggle="modal" data-target="#fastcontact">
-                                        <i class="fa fa-envelope font-green-soft"></i> Contact Buyer
-                                    </a>
-                                </td>
                             </tr>
                             @endforeach
                         </tbody>

@@ -39,7 +39,7 @@ class ArticlesController extends BaseController {
 
     public function category($category)
     {
-        $results = Article::where('category', '=', $category->id)->paginate(20);
+        $results = Article::where('category_id', '=', $category->id)->paginate(18);
 
         if (Request::ajax())
         {
@@ -48,6 +48,48 @@ class ArticlesController extends BaseController {
         return View::make('articles.category')
             ->withCategory($category)
             ->withResults($results);
+    }
+
+    public function buyers()
+    {
+        $category = Role::find(Config::get('constants.ROLE_BUYER'));
+        $results = Article::where('category_id', '=', $category->id)->paginate(18);
+
+        if (Request::ajax())
+        {
+            return Response::json(View::make('articles.category')->withResults($results)->render());
+        }
+        return View::make('articles.category')
+            ->withCategory($category)
+            ->withArticles($results);
+    }
+
+    public function sellers()
+    {
+        $category = Role::find(Config::get('constants.ROLE_SELLER'));
+        $results = Article::where('category_id', '=', $category->id)->paginate(18);
+
+        if (Request::ajax())
+        {
+            return Response::json(View::make('articles.category')->withResults($results)->render());
+        }
+        return View::make('articles.category')
+            ->withCategory($category)
+            ->withArticles($results);
+    }
+
+    public function brokers()
+    {
+        $category = Role::find(Config::get('constants.ROLE_BROKER'));
+        $results = Article::where('category_id', '=', $category->id)->paginate(18);
+
+        if (Request::ajax())
+        {
+            return Response::json(View::make('articles.category')->withResults($results)->render());
+        }
+        return View::make('articles.category')
+            ->withCategory($category)
+            ->withArticles($results);
     }
 
     /**

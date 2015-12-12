@@ -39,7 +39,7 @@
                             <select id="country" class="form-control" name="country">
                                 <option value="">Select ...</option>
                                 @foreach(App\Models\Country::all() as $c)
-                                <option value="{{$c->id}}" {{ $c->id == 36 ? 'selected' : '' }} >{{$c->name}}</option>
+                                <option value="{{$c->id}}" {{ $c->id == Input::get('country') ? 'selected' : '' }} >{{$c->name}}</option>
                                 @endforeach
                             </select>
                             <div class="help-block"></div>

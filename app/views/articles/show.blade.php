@@ -9,7 +9,7 @@
     <div class="col-sm-12 col-md-9 col-lg-9">
         <h1>{{ $article->title }}</h1>
         <p class="lead">
-            Recommended for: <a href="#">{{ ucwords($article->category->name) }}s</a>
+            Recommended for: <a href="{{ url('articles/'.$article->category->name.'s') }}">{{ ucwords($article->category->name) }}s</a>
         </p>
         <hr>
         <p><span class="fa fa-clock"></span> Posted {{ $article->created_at->diffForHumans() }}</p>

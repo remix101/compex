@@ -12,7 +12,19 @@ class ListingPhoto extends BaseModel {
         parent::boot();
         //delete associated file
         static::deleting(function($photo){
-            unlink(public_path('files/').$photo->photo_url);
+            try{
+                $filepath = public_path('files/').$photo->photo_url;
+                if(file_exists($filepath))
+                {
+                    unlink($filepath);
+                }
+            }
+            catch(\Exception $e)
+            {
+                //some error while deleteing
+                \Log::info('Error deleting: '.$filepath);
+                \Log::debug($e);
+            }
         });
     }
 

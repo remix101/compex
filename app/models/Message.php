@@ -72,6 +72,14 @@ class Message extends BaseModel {
         return $query->whereRaw('unread = 1');
     }
 
+    public function getHasUnreadAttribute()
+    {
+        if(\Auth::check())
+        {
+            return ($this->unread == 1 || $this->unreadReplies()->where('recipient_id', '=', \Auth::user()->id)->count() > 0);
+        }
+    }
+
     public function getLastReply()
     {
         $lastReply = $this->hasMany('App\Models\MessageReply', 'message_id')->desc('created_at')->first();

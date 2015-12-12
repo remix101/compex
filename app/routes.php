@@ -23,6 +23,9 @@ Route::get('listings/', function(){
 Route::get('listings/categories/{category}', 'ListingsController@categoryListings');
 Route::get('listings/countries/{country}', 'ListingsController@countryListings');
 Route::get('listings/{listing}', 'ListingsController@show');
+Route::get('articles/buyers', 'ArticlesController@buyers');
+Route::get('articles/brokers', 'ArticlesController@brokers');
+Route::get('articles/sellers', 'ArticlesController@sellers');
 Route::get('articles/{article}', 'ArticlesController@show');
 Route::get('articles/', 'ArticlesController@getSearch');
 Route::get('articles/categories/{role}', 'ArticlesController@category');
@@ -41,6 +44,11 @@ Route::post('login', 'UsersController@authenticate');
 Route::get('logout', 'UsersController@logout');
 Route::get('profile/{user}', 'UsersController@profile');
 
+Route::get('support', 'HomeController@support');
+Route::post('support', ['as' => 'site.contact', 'uses' => 'HomeController@contact', 'before' => 'csrf', function(){
+    return 'You gave a valid CSRF token!';
+}]);
+Route::get('faq', 'HomeController@faq');
 Route::get('adverts/', 'AdvertsController@getSearch');
 Route::get('brokers/', 'BrokersController@index');
 Route::get('adverts/categories/{category}', 'ListingsController@categoryListings');
@@ -255,10 +263,6 @@ Route::group(['before' => 'auth'], function(){
 
     Route::get('log', 'Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 });
-
-Route::post('contact', ['as' => 'site.contact', 'uses' => 'HomeController@contact', 'before' => 'csrf', function(){
-    return 'You gave a valid CSRF token!';
-}]);
 
 Route::model('user', 'User');
 Route::model('buyer', 'App\Models\Buyer');

@@ -6,10 +6,10 @@
 
 <div class="container">
     <div class="row">
+        @include('articles.sidebar')
         <div class="headline">
             <h2>Viewing Articles in {{ ucwords($category->name) }}</h2>
         </div><!-- headline -->
-        @include('articles.sidebar')
         <div class="col-sm-12 col-md-9 col-lg-9">
             @foreach($articles as $a)
             <div class="col-md-6 col-lg-4 col-xs-12">
