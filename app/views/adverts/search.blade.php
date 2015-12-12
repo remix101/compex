@@ -104,6 +104,7 @@
                         <h4>Initiate communication with buyer.</h4>
                         <input type="hidden" id="recipient" value="" name="recipient_id">
                         <input type="hidden" id="advert" value="" name="advert_id">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <textarea name="message" class="form-control" rows="4" placeholder="Please type a message..." data-placement="top" data-trigger="manual" required>Hi, I have a property you may be interested in... </textarea>
                         <p class="text-info" id="infotext">Included Advert: </p>
                     </div>
@@ -124,7 +125,7 @@
                         <textarea name="message" class="form-control" rows="4" placeholder="Please type a message..." data-placement="top" data-trigger="manual" required>Hi, I have a property you may be interested in... </textarea>
                         <p class="text-info" id="infotext">Included Advert: </p>
                     </div>
-                    <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group required" style="margin-bottom:0px">

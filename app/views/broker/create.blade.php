@@ -26,7 +26,7 @@
                     </div>
                     @endif
 
-                    <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-group required">
                         <label class="control-label" for="title">Title</label>
                         <select id="title" class="form-control" name="title">

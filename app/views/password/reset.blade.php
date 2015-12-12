@@ -40,6 +40,7 @@
                             <input class="form-control has-dark-background" name="password_confirmation" placeholder="Confirm Password" type="password">
                         </div>
                     </div>
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 </div>
                 <div class="panel-footer">
                     <div class="" style="margin:10px 12px 2px 0px">

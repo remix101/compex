@@ -33,21 +33,19 @@ Route::get('articles/categories/{role}', 'ArticlesController@category');
 Route::get('register', ['uses' => 'UsersController@register']);
 Route::get('register/seller', ['uses' => 'SellersController@create']);
 Route::get('register/broker', ['uses' => 'BrokersController@create']);
-Route::post('register', ['uses' => 'UsersController@store']);
+Route::post('register', ['before' => 'csrf', 'uses' => 'UsersController@store']);
 Route::get('login', 'UsersController@login');
 Route::get('auth/facebook/{rolename?}', 'UsersController@loginWithFacebook');
 Route::get('auth/google/{rolename?}', 'UsersController@loginWithGoogle');
 Route::get('auth/linkedin/{rolename?}', 'UsersController@loginWithLinkedin');
 Route::get('auth/yahoo/{rolename?}', 'UsersController@loginWithYahoo');
 Route::get('businesses/', 'AdvertsController@getSearch');
-Route::post('login', 'UsersController@authenticate');
+Route::post('login', ['before' => 'csrf', 'uses' => 'UsersController@authenticate']);
 Route::get('logout', 'UsersController@logout');
 Route::get('profile/{user}', 'UsersController@profile');
 
 Route::get('support', 'HomeController@support');
-Route::post('support', ['as' => 'site.contact', 'uses' => 'HomeController@contact', 'before' => 'csrf', function(){
-    return 'You gave a valid CSRF token!';
-}]);
+Route::post('support', ['as' => 'site.contact', 'uses' => 'HomeController@contact', 'before' => 'csrf']);
 Route::get('faq', 'HomeController@faq');
 Route::get('adverts/', 'AdvertsController@getSearch');
 Route::get('brokers/', 'BrokersController@index');
@@ -56,34 +54,34 @@ Route::get('adverts/{advert}', 'ListingsController@show');
 
 Route::group(['prefix' => 'user'], function(){
     Route::get('login', ['as' => 'user.login', 'uses' => 'UsersController@login']);
-    Route::post('login', ['as' => 'user.authenticate', 'uses' => 'UsersController@authenticate']);
+    Route::post('login', ['before' => 'csrf', 'as' => 'user.authenticate', 'uses' => 'UsersController@authenticate']);
     Route::get('register', ['as' => 'user.register', 'uses' => 'UsersController@register']);
-    Route::post('register', ['as' => 'user.store', 'uses' => 'UsersController@store']);
+    Route::post('register', ['before' => 'csrf', 'as' => 'user.store', 'uses' => 'UsersController@store']);
 });
 
 Route::group(['prefix' => 'messages'], function(){
-    Route::post('compose', 'MessagesController@store');
+    Route::post('compose', ['before' => 'csrf', 'uses' => 'MessagesController@store']);
 });
 
 Route::group(['prefix' => 'password'], function(){
     Route::get('reset', ['uses' => 'PasswordController@remind','as' => 'password.remind']);
-    Route::post('reset', ['uses' => 'PasswordController@request', 'as' => 'password.request']);
+    Route::post('reset', ['before' => 'csrf', 'uses' => 'PasswordController@request', 'as' => 'password.request']);
     Route::get('reset/{token}', ['uses' => 'PasswordController@reset', 'as' => 'password.reset']);
     Route::post('password/reset/{token}', ['uses' => 'PasswordController@update', 'as' => 'password.update']);
 });
 
 Route::group(['prefix' => 'sellers'], function(){
     Route::get('create', 'SellersController@create');
-    Route::post('create', 'SellersController@store');
+    Route::post('create', ['before' =>'csrf', 'uses' => 'SellersController@store']);
     Route::get('register', 'SellersController@create');
-    Route::post('register', 'SellersController@store');
+    Route::post('register', ['before' => 'csrf', 'uses' => 'SellersController@store']);
 });
 
 Route::group(['prefix' => 'broker'], function(){
     Route::get('create', 'BrokersController@create');
-    Route::post('create', 'BrokersController@store');
+    Route::post('create', ['before' =>'csrf', 'uses' => 'BrokersController@store']);
     Route::get('register', 'BrokersController@create');
-    Route::post('register', 'BrokersController@store');
+    Route::post('register', ['before' =>'csrf', 'uses' => 'BrokersController@store']);
 });
 
 Route::group(['before' => 'auth'], function(){
@@ -94,7 +92,7 @@ Route::group(['before' => 'auth'], function(){
     Route::post('account', 'UsersController@update');
     Route::get('sell', 'ListingsController@create');
 
-    Route::group(['prefix' => 'admin'], function(){
+    Route::group(['before' => 'admin', 'prefix' => 'admin'], function(){
         Route::get('settings', 'AdminController@settings');
         Route::get('inbox', 'MessagesController@index');
         Route::post('settings', 'AdminController@storeSettings');

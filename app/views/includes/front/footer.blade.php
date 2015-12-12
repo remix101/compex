@@ -22,6 +22,7 @@
     </div>
 </div>
 
+@if(!Auth::check())
 <div id="footer">
     <div class="container">
         <div class="row">
@@ -58,6 +59,7 @@
         </div><!-- row -->
     </div><!-- container -->
 </div>
+@endif
 <div id="footer-bottom">
     <div class="container">
         <div class="row">
@@ -161,7 +163,7 @@
             }
             location.href = href;
             @else
-            location = location.href + '&category='+catId;
+                location = location.href + '&category='+catId;
             @endif
         });
         $('#conselect').on('change', function(e){
@@ -187,7 +189,7 @@
             }
             location.href = href;
             @else
-            location = location.href + '&country='+conId;
+                location = location.href + '&country='+conId;
             @endif
         });
     });

@@ -10,7 +10,7 @@
     <div class="business_create">
         <h1>Edit business listing: {{$listing->heading}}</h1>
         <form id="w0" action="{{ url('brokers/listings/edit/'.$listing->id) }}" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="row">
                 <div class="col-md-12">
                     <p>Unless stated as required (*), all the fields are optional. We understand that anonymity and privacy may sometimes be key considerations when selling a business - therefore business names and location details do not have to be shown.

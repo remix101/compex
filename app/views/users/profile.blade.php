@@ -82,7 +82,7 @@
                 <div class="col-md-12">
                     <h4>Recent listings by {{ $usr->role->name }}</h4>
                 </div>
-                @foreach($usr->profile->listings()->take(5)->get() as $listing)
+                @foreach($usr->profile->listings()->verified()->desc('created_at')->take(10)->get() as $listing)
                 <div class="col-sm-6 col-md-3 col-xs-12">
                     <a href="{{ $listing->url }}">
                         <div class="blog-article">
@@ -117,7 +117,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($usr->profile->adverts()->take(5)->get() as $advert)
+                            @foreach($usr->profile->adverts()->desc('created_at')->take(10)->get() as $advert)
                             <tr>
                                 <td class="table-category">
                                     <a href="javascript:;">{{ $advert->categoryName }}</a>

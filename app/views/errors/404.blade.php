@@ -14,7 +14,7 @@
                 </div>
                 <p class="lead">We were unable to find the page you requested.
                 </p>
-                <p class="">Please contact us if you think tihs is an error</p>
+                <p class="">Please contact us if you think this is an error</p>
 
             </div>
         </div>

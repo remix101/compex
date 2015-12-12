@@ -113,7 +113,7 @@
 
                     @else
                     <div id="w0" action="{{ url('messages/compose') }}" method="post">
-                        <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group required">

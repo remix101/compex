@@ -10,7 +10,7 @@
     <div class="business_create">
         <h1>Add Documents and Photos</h1>
         <form id="w0" action="{{ url('sellers/listings/'.$listing->id.'/photos') }}" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="row">
                 <div class="col-md-12">
                     @if(isset($errors))

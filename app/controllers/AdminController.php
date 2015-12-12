@@ -23,15 +23,6 @@ use Illuminate\Support\Facades\Request;
 
 class AdminController extends BaseController {
     
-    public function __construct()
-    {
-        if(Auth::check() && !Auth::user()->isAdmin())
-        {
-            Auth::logout();
-            return Redirect::to('/');
-        }
-    }
-
     public function dashboard()
     {
         return View::make('admin.dashboard');

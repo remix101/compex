@@ -81,7 +81,7 @@
                 <div class="col-md-12">
                     <h4>My recent listings</h4>
                 </div>
-                @foreach($user->profile->listings()->take(5)->get() as $listing)
+                @foreach($user->profile->listings()->verified()->desc('created_at')->take(10)->get() as $listing)
                 <div class="col-sm-6 col-md-3 col-xs-12">
                     <a href="{{ $listing->url }}">
                         <div class="blog-article">
@@ -102,6 +102,42 @@
                     <h4 class="text-center">You have no listings yet</h4>
                 </div>
                 @endif
+                @elseif($user->isBuyer() && $user->profile->adverts()->count() > 0)
+                <div class="col-md-12">
+                    <h4>Recent businesses wanted by {{ $user->role->name }}</h4>
+                </div>
+                <div class="search-table table-responsive">
+                    <table class="table table-bordered table-striped table-condensed">
+                        <thead class="bg-blue">
+                            <tr>
+                                <th>Category</th>
+                                <th>Headline</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($user->profile->adverts()->desc('created_at')->take(10)->get() as $advert)
+                            <tr>
+                                <td class="table-category">
+                                    <a href="javascript:;">{{ $advert->categoryName }}</a>
+                                    <p>Posted:
+                                        <span class="font-grey-cascade">{{ $advert->created_at->diffForHumans() }}</span>
+                                    </p>
+                                </td>
+                                <td class="table-title">
+                                    <h5>
+                                        <a href="javascript:;">
+                                            <i class="fa fa-arrow-right font-blue"></i><span id="heading">{{$advert->heading}}</span> 
+                                        </a>
+                                    </h5>
+                                </td>
+                                <td class="table-desc"> {{ $advert->description }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
                 @endif
             </div>
         </div>

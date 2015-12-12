@@ -22,6 +22,7 @@
     </div>
 </div>
 
+    <!--
 <div id="footer">
     <div class="container">
         <div class="row">
@@ -55,9 +56,9 @@
                     </ul>
                 </div>
             </div>
-        </div><!-- row -->
-    </div><!-- container -->
+        </div><!-- row -
 </div>
+    </div><!-- container -->
 <div id="footer-bottom">
     <div class="container">
         <div class="row">

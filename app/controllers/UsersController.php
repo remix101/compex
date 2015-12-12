@@ -37,9 +37,16 @@ class UsersController extends BaseController {
         $email = Input::get('email');
         $password = Input::get('password');
         $u = User::where('email', '=', $email)->first();
-        if($u != null && $u->status == 1)
+        if($u != null)
         {
-            return View::make('users.login')->with('message', 'Account not verified. Please verify your account first and try logging in again.');
+            if($u->status == Config::get('constants.USER_STATUS_PENDING'))
+            {
+                return View::make('users.login')->with('message', 'Account not verified. Please verify your account first and try logging in again.');
+            }
+            elseif($u->status == Config::get('constants.USER_STATUS_BANNED'))
+            {
+                return View::make('users.login')->with('message', 'Account not authorized. Please contact admin to resolve any issues with your account.');
+            }
         }
         if(Auth::attempt(array('email' => $email, 'password' => $password)))
         {

@@ -72,6 +72,74 @@ Route::filter('guest', function()
 
 /*
 |--------------------------------------------------------------------------
+| Admin Filter
+|--------------------------------------------------------------------------
+|
+| The "admin" filter ensures a user is an admin to access admin routes.
+|
+*/
+
+Route::filter('admin', function()
+{
+    if(Auth::check() && !Auth::user()->isAdmin())
+    {
+        return View::make('errors.404')->withMessage("The page you're trying to access does not exist or you do not have the correct permissions to access");
+    }
+});
+
+/*
+|--------------------------------------------------------------------------
+| Seller Filter
+|--------------------------------------------------------------------------
+|
+| The "seller" filter ensures a user is an admin to access admin routes.
+|
+*/
+
+Route::filter('seller', function()
+{
+    if(Auth::check() && !Auth::user()->isSeller())
+    {
+        return View::make('errors.404')->withMessage("The page you're trying to access does not exist or you do not have the correct permissions to access");
+    }
+});
+
+/*
+|--------------------------------------------------------------------------
+| Broker Filter
+|--------------------------------------------------------------------------
+|
+| The "broker" filter ensures a user is an admin to access admin routes.
+|
+*/
+
+Route::filter('broker', function()
+{
+    if(Auth::check() && !Auth::user()->isBroker())
+    {
+        return View::make('errors.404')->withMessage("The page you're trying to access does not exist or you do not have the correct permissions to access");
+    }
+});
+
+/*
+|--------------------------------------------------------------------------
+| Buyer Filter
+|--------------------------------------------------------------------------
+|
+| The "buyer" filter ensures a user is an admin to access admin routes.
+|
+*/
+
+Route::filter('buyer', function()
+{
+    if(Auth::check() && !Auth::user()->isBuyer())
+    {
+        return View::make('errors.404')->withMessage("The page you're trying to access does not exist or you do not have the correct permissions to access");
+    }
+});
+
+/*
+|--------------------------------------------------------------------------
 | CSRF Protection Filter
 |--------------------------------------------------------------------------
 |
@@ -85,6 +153,7 @@ Route::filter('csrf', function()
 {
 	if (Session::token() != Input::get('_token'))
 	{
-		throw new Illuminate\Session\TokenMismatchException;
+        Log::info('csrf_token_gate -- IP: '.$_SERVER['REMOTE_ADDR']);
+        App::abort(403, 'Invalid request. Please try again');
 	}
 });

@@ -4,6 +4,8 @@
 
 @section('content')
 
+<?php $oneToken = csrf_token(); ?>
+
 <div id="page-header" class="page-header_business">
     <div class="container">
         <div class="row">
@@ -97,6 +99,7 @@
                     @if(Auth::check())
                     <form action="{{ url('messages/compose') }}" method="post" class="form-horizontal col-sm-12">
                         <p class="help-block pull-left text-danger hide" id="form-error">&nbsp; Something went wrong. </p>
+                        <input type="hidden" name="_token" value="{{ $oneToken }}">
                         <div class="form-group">
                             <h4>Please specify additional info you require from seller.</h4>
                             <input type="hidden" value="{{ $listing->user->id }}" name="recipient_id">
@@ -111,7 +114,7 @@
 
                     @else
                     <form id="w0" action="{{ url('messages/compose') }}" method="post">
-                        <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+                        <input type="hidden" name="_token" value="{{ $oneToken }}">
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group required">
@@ -222,6 +225,8 @@
             </div>
             <form action="{{ url('messages/compose') }}" method="post">
                 <div class="modal-body">
+                    <input type="hidden" name="_token" value="{{ $oneToken }}">
+
                     <p class="help-block pull-left text-danger hide" id="form-error">&nbsp; Something went wrong. </p>
                     <div class="form-group">
                         <h4>Please specify additional info you require from seller.</h4>

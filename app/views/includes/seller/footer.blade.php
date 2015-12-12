@@ -22,42 +22,45 @@
     </div>
 </div>
 
+<!--  
 <div id="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-3 col-xs-6">
-                <div class="widget widget-categories">
-                    <ul>
-                        <li>
-                            <a href="{{ url('listings') }}">Buy a Business</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-3 col-xs-6">
-                <div class="widget widget-categories">
-                    <ul>
-                        <li><a href="{{ url('sell') }}">Sell a Business</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-3 col-xs-6">
-                <div class="widget widget-categories">
-                    <ul>
-                        <li><a href="{{ url('buyer/feature') }}">Advertise a Wanted Business</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-3 col-xs-6">
-                <div class="widget widget-categories">
-                    <ul>
-                        <li><a href="{{ url('brokers') }}">Find Business Brokers</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div><!-- row -->
-    </div><!-- container -->
+
+<div class="container">
+<div class="row">
+<div class="col-sm-3 col-xs-6">
+<div class="widget widget-categories">
+<ul>
+<li>
+<a href="{{ url('listings') }}">Buy a Business</a>
+</li>
+</ul>
 </div>
+</div>
+<div class="col-sm-3 col-xs-6">
+<div class="widget widget-categories">
+<ul>
+<li><a href="{{ url('sell') }}">Sell a Business</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-3 col-xs-6">
+<div class="widget widget-categories">
+<ul>
+<li><a href="{{ url('buyer/feature') }}">Advertise a Wanted Business</a></li>
+</ul>
+</div>
+</div>
+<div class="col-sm-3 col-xs-6">
+<div class="widget widget-categories">
+<ul>
+<li><a href="{{ url('brokers') }}">Find Business Brokers</a></li>
+</ul>
+</div>
+</div>
+</div> row 
+</div>
+</div> container -->
+
 <div id="footer-bottom">
     <div class="container">
         <div class="row">
@@ -135,7 +138,7 @@
             }
             location.href = href;
             @else
-            location = location.href + '&category='+catId;
+                location = location.href + '&category='+catId;
             @endif
         });
         $('#conselect').on('change', function(e){
@@ -161,7 +164,7 @@
             }
             location.href = href;
             @else
-            location = location.href + '&country='+conId;
+                location = location.href + '&country='+conId;
             @endif
         });
     });

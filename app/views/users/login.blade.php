@@ -53,7 +53,7 @@
                         </div>
                         @endif
 
-                        <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="form-group required">
                             <label class="control-label" for="email">Email</label>
                             <input type="text" id="email" class="form-control" name="email">

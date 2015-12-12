@@ -264,7 +264,7 @@
           </tr>
           <tr>
             <td class="free-text">
-              Thank you for signing up with CompanyExchange! We are here 24 hours to help you secure your business opportunity. Check out some of our articles below to get started or click the button to view your new account.
+              Thank you for signing up with CompanyExchange! We are here 24 hours to help you secure new business opportunities.<br>Click the button to go to your account now.
             </td>
           </tr>
             @if(isset($password_confirmation))

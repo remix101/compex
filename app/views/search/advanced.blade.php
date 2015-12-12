@@ -11,7 +11,7 @@
         <div class="advance_search well">
 
             <form id="w0" action="{{ url('search/advanced') }}" method="post">
-                <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="row">
                     <div class="col-md-5 col-sm-12">
                         <div class="form-group field-query">
