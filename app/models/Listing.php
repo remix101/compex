@@ -59,38 +59,6 @@ class Listing extends BaseModel implements SluggableInterface
         ],
     ];
 
-    protected static $_excludeUnverified = false;
-
-    /**
-     * Overrides (Laravel or)Illuminate\Database\Eloquent\Model 's query()
-     *
-     * @return mixed
-     */
-    public function newQuery($excludeDeleted = true)
-    {
-        $query = parent::newQuery($excludeDeleted);
-        // Restrict access to all unverified listings 
-        if(static::$_excludeUnverified)
-        {
-            $query->where('verified', '=', 1);
-        }
-        else
-        {
-            static::$_excludeUnverified = true;
-        }
-        return $query;
-    }
-
-    /**
-     * @return User
-     */
-    public static function allowUnverified()
-    {
-        static::$_excludeUnverified = false;
-        return new static;
-    }
-
-
     public function seller()
     {
         return $this->belongsTo('App\Models\Seller', 'seller_id');
