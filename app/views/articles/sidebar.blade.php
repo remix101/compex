@@ -14,8 +14,8 @@
         <ul>
             @foreach(App\Models\Article::desc('views')->take(5)->get() as $a)
             <li>
-                <a class="post-title" href="{{ url('articles/'.$a->slug) }}#">{{ $a->title }}</a><br>
-                <a class="post-date" href="#">{{ $a->created_at->diffForHumans() }}</a><br>
+                <a class="post-title" href="{{ url('articles/'.$a->slug) }}">{{ $a->title }}</a><br>
+                <a class="post-date" href="{{ url('articles/'.$a->slug) }}">{{ $a->created_at->diffForHumans() }}</a><br>
                 <a class="read-more" href="{{ url('articles/'.$a->slug) }}">Read more</a>
             </li>
             @endforeach
@@ -26,8 +26,8 @@
         <ul>
             @foreach(App\Models\Article::desc('created_at')->take(5)->get() as $a)
             <li>
-                <a class="post-title" href="{{ url('articles/'.$a->slug) }}#">{{ $a->title }}</a><br>
-                <a class="post-date" href="#">{{ $a->created_at->diffForHumans() }}</a><br>
+                <a class="post-title" href="{{ url('articles/'.$a->slug) }}">{{ $a->title }}</a><br>
+                <a class="post-date" href="{{ url('articles/'.$a->slug) }}">{{ $a->created_at->diffForHumans() }}</a><br>
                 <a class="read-more" href="{{ url('articles/'.$a->slug) }}">Read more</a>
             </li>
             @endforeach

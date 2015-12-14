@@ -80,6 +80,12 @@ class Message extends BaseModel {
         }
     }
 
+    public function scopeHasUnreadReply($query, $uid = false)
+    {
+        $uid = ($uid == false && \Auth::check()) ? \Auth::user()->id : $uid;
+        return $query->toSql();//->where('recipient_id', '=', $uid);
+    }
+
     public function getLastReply()
     {
         $lastReply = $this->hasMany('App\Models\MessageReply', 'message_id')->desc('created_at')->first();

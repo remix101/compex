@@ -200,12 +200,13 @@
             <div class="widget widget-recent-posts">
                 <h6 class="widget-title">Latest Articles</h6>
                 <ul>
+                    @foreach(App\Models\Article::desc('created_at')->take(5)->get() as $a)
                     <li>
-                        <img src="./Successful Devon Hotel and Restaurant For Sale_files/saved_resource(1)" alt="">
-                        <a class="post-title" href="http://cx.dev.ephyros.com/business/view/82#">Party with style</a><br>
-                        <a class="post-date" href="http://cx.dev.ephyros.com/business/view/82#">Jul 25, 2015</a><br>
-                        <a class="read-more" href="http://cx.dev.ephyros.com/business/view/82#">Read more</a>
+                        <a class="post-title" href="{{ url('articles/'.$a->slug) }}">{{ $a->title }}</a><br>
+                        <a class="post-date" href="{{ url('articles/'.$a->slug) }}">{{ $a->created_at->diffForHumans() }}</a><br>
+                        <a class="read-more" href="{{ url('articles/'.$a->slug) }}">Read more</a>
                     </li>
+                    @endforeach
                 </ul>
 
             </div>

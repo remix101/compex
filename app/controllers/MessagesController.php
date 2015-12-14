@@ -29,7 +29,7 @@ class MessagesController extends BaseController {
     {
         $user = Auth::user();
         $messages = $user->allMessages()->paginate(15);
-        $data['unread_count'] = $user->unreadMessages()->count();
+        $data['unread_count'] = $user->allMessages()->hasUnreadReply()->count();
         return View::make($user->role->name.'.messages.inbox')->with(compact('data', 'messages'));
     }
 
@@ -99,7 +99,7 @@ class MessagesController extends BaseController {
 
         if(!Auth::check() && isset($data['email']))
         {
-            $result = $this->registerBuyer($data);
+            $result = $this->registerUser($data, Config::get('constants.ROLE_BROKER'));
             Log::info($result);
             if(is_array($result))
             {
@@ -132,17 +132,28 @@ class MessagesController extends BaseController {
         }
     }
 
-    private function registerBuyer($data)
+    private function registerUser($data, $role)
     {
         if(isset($data['phone_number']))
         {
             $data['phone_number'] = str_replace(' ', '', $data['phone_number']);
         }
         $u = new User;
-        $data['role_id'] = Config::get('constants.ROLE_BUYER');
-        $a = new Buyer;
-        $u->status = 2;
-        $data['skip_verification'] = true;
+        $data['role_id'] = $role;
+        switch(strtolower($role))
+        {
+            case Config::get('constants.ROLE_SELLER'):
+                $a = new Seller;
+                break;
+            case Config::get('constants.ROLE_BROKER'):
+                $a = new Broker;
+                break;
+            default:
+                $a = new Buyer;
+                $u->status = 2;
+                $data['skip_verification'] = true;
+                break;
+        }
         if(!isset($data['password']) || $data['password'] == "")
         {
             $pwd = Str::random(10);

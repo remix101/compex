@@ -201,10 +201,10 @@
             <div class="widget widget-recent-posts">
                 <h6 class="widget-title">Latest Listings</h6>
                 <ul>
-                    @foreach(App\Models\Listing::desc('created_at')->take(5)->get() as $l)
+                    @foreach(App\Models\Listing::verified()->desc('created_at')->take(5)->get() as $l)
                     <li>
-                        <a class="post-title" href="{{ url('listings/'.$listing->slug) }}#">{{ $l->heading }}</a><br>
-                        <a class="post-date" href="#">{{ $l->created_at->diffForHumans() }}</a><br>
+                        <a class="post-title" href="{{ url('listings/'.$l->slug) }}">{{ $l->heading }}</a><br>
+                        <a class="post-date" href="{{ url('listings/'.$l->slug) }}">{{ $l->created_at->diffForHumans() }}</a><br>
                         <a class="read-more" href="{{ url('listings/'.$l->slug) }}">Read more</a>
                     </li>
                     @endforeach
