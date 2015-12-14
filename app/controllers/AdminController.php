@@ -7,6 +7,7 @@ use App\Models\Article;
 use App\Models\Menu;
 use App\Models\MenuItem;
 use App\Models\Role;
+use App\Models\SiteConfig;
 use App\Models\Listing;
 use App\Models\ListingPhoto;
 use App\Models\ListingMetum;
@@ -22,62 +23,110 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Request;
 
 class AdminController extends BaseController {
-    
+
+    /**
+     * Gets the admin dashboard
+     * @return Response
+     */
     public function dashboard()
     {
         return View::make('admin.dashboard');
     }
 
+    /**
+     * Gets a page listing all the user on the system
+     * @return Response
+     */
     public function getUsers()
     {        
         return View::make('admin.users.index');
     }
 
+    /**
+     * Gets a page listing all the sellers on the system
+     * @return Response
+     */
     public function sellers()
     {        
         return View::make('admin.users.sellers');
     }
 
+    /**
+     * Gets a page listing all the brokers on the system
+     * @return Response
+     */
     public function brokers()
     {        
         return View::make('admin.users.brokers');
     }
 
+    /**
+     * Gets a page listing all the buyers on the system
+     * @return Response
+     */
     public function buyers()
     {        
         return View::make('admin.users.buyers');
     }
 
+    /**
+     * Gets a page listing all the listings on the system
+     * @return Response
+     */
     public function listings()
     {
         return View::make('admin.listings.index');
     }
 
+    /**
+     * Gets a page listing all the listings by sellers on the system
+     * @return Response
+     */
     public function sellerListings()
     {
         return View::make('admin.listings.seller');
     }
 
+    /**
+     * Gets a page listing all the listings by brokers on the system
+     * @return Response
+     */
     public function brokerListings()
     {
         return View::make('admin.listings.broker');
     }
-
+    
+    /**
+     * Gets a page listing all the adverts (businesses wanted) on the system
+     * @return Response
+     */
     public function adverts()
     {
         return View::make('admin.listings.adverts');
     }
 
+    /**
+     * Gets a page listing all the articles on the system
+     * @return Response
+     */
     public function articles()
     {
         return View::make('admin.articles.index');
     }
 
+    /**
+     * Gets the page for creating a new article
+     * @return Response
+     */
     public function createArticle()
     {
         return View::make('admin.articles.create');
     }
 
+    /**
+     * Stores an article
+     * @return Response
+     */
     public function storeArticle()
     {
         $data = Input::all();
@@ -101,12 +150,22 @@ class AdminController extends BaseController {
         Input::flash();
         return View::make('admin.articles.create')->withErrors($article->getValidator());
     }
-
+    
+    /**
+     * Gets the page for editing/updating an article
+     * @param  Article $article Article to edit
+     * @return Response
+     */
     public function editArticle($article)
     {
         return View::make('admin.articles.edit')->withArticle($article);
     }
 
+    /**
+     * Updates an article
+     * @param  Article $article Article to update
+     * @return Response
+     */
     public function updateArticle($article)
     {
         $data = Input::all();
@@ -123,6 +182,11 @@ class AdminController extends BaseController {
             ->withErrors($article->getValidator());
     }
 
+    /**
+     * DEletes an article
+     * @param  Article $article The article to delete
+     * @return Response
+     */
     public function deleteArticle($article)
     {
         $article->delete();
@@ -132,7 +196,12 @@ class AdminController extends BaseController {
         }
         return View::make('admin.articles.index')->withDelete(true);
     }
-
+    
+    /**
+     * Deletes a listing from the system
+     * @param  Listing $listing The listing to delete
+     * @return Response
+     */
     public function destroy($listing)
     {
         $listing->delete();
@@ -143,6 +212,11 @@ class AdminController extends BaseController {
         return View::make('admin.listings')->withDelete(true);
     }
 
+    /**
+     * Approves a listing
+     * @param  Listing $listing
+     * @return Response
+     */
     public function approve($listing)
     {
         $listing->verified = 1;
@@ -155,6 +229,11 @@ class AdminController extends BaseController {
             ->withApprove(true);
     }
 
+    /**
+     * Unapproves a listing
+     * @param  Listing $listing The listing to approve/unapprove
+     * @return Response
+     */
     public function unapprove($listing)
     {
         $listing->verified = 0;
@@ -223,6 +302,11 @@ class AdminController extends BaseController {
             ->withErrors($u->getValidator());
     }
 
+    /**
+     * Deletes a user from the system
+     * @param  User $user
+     * @return Response
+     */
     public function deleteUser($user)
     {
         $user->delete();
@@ -233,6 +317,11 @@ class AdminController extends BaseController {
         return View::make('admin.users.index')->withDelete(true);
     }
 
+    /**
+     * Bans a user from the system
+     * @param  User $user The user to ban
+     * @return Response
+     */
     public function banUser($user)
     {
         $user->status = Config::get('constants.USER_STATUS_BANNED');
@@ -245,6 +334,11 @@ class AdminController extends BaseController {
             ->withBan(true);
     }
 
+    /**
+     * Unbans a user from the system
+     * @param  User $user The user to unban
+     * @return Response
+     */
     public function unbanUser($user)
     {
         $user->status = Config::get('constants.USER_STATUS_VERIFIED');
@@ -257,6 +351,11 @@ class AdminController extends BaseController {
             ->withUnban(true);
     }
 
+    /**
+     * Deletes an advert from the system
+     * @param  Advert $advert The advert to delete
+     * @return Response
+     */
     public function deleteAdvert($advert)
     {
         $advert->delete();
@@ -280,7 +379,7 @@ class AdminController extends BaseController {
     }
 
     /**
-	 * Store admin settings
+	 * Update/Store admin menu settings
 	 * POST /admin/settings
 	 *
 	 * @return Response
@@ -375,6 +474,23 @@ class AdminController extends BaseController {
         if(Request::ajax())
         {
             return Response::json('success');
+        }
+        return View::make('admin.settings');
+    }
+    
+    /**
+     * Configure the site settings on the page
+     * @return Response
+     */
+    public function updateSearch()
+    {
+        SiteConfig::updateOrCreate(['name' => 'search_pages'], [
+            'name' => 'search_pages',
+            'value' => Input::get('search_pages'),
+        ]);
+        if(Request::ajax())
+        {
+            return Response::json('search page updated');
         }
         return View::make('admin.settings');
     }

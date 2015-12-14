@@ -96,6 +96,7 @@ Route::group(['before' => 'auth'], function(){
         Route::get('settings', 'AdminController@settings');
         Route::get('inbox', 'MessagesController@index');
         Route::post('settings', 'AdminController@storeSettings');
+        Route::post('search', 'AdminController@updateSearch');
         Route::get('articles', 'AdminController@listArticles');
         Route::get('articles/create', 'AdminController@createArticle');
         Route::post('articles', 'AdminController@storeArticle');

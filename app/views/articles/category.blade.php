@@ -8,14 +8,14 @@
     <div class="row">
         @include('articles.sidebar')
         <div class="headline">
-            <h2>Viewing Articles in {{ ucwords($category->name) }}</h2>
+            <h2>Viewing Articles for {{ ucwords($category->name) }}s</h2>
         </div><!-- headline -->
-        <div class="col-sm-12 col-md-9 col-lg-9">
+        <div class="col-sm-12 col-md-9 col-lg-9" style="padding:12px">
             @foreach($articles as $a)
-            <div class="col-md-6 col-lg-4 col-xs-12">
+            <div class="col-xs-12" style="margin-bottom:10px">
                 <div class="media">
                     <a class="pull-left" href="{{ url('articles/'.$a->slug) }}">
-                        <img class="media-object" src="{{ $a->featuredImage }}" height="84" width="84">
+                        <img class="media-object image-respsonsive" src="{{ $a->featuredImage }}" alt="{{ $a->title }}" height="120px" width="120px">
                     </a>
                     <div class="media-body">
                         <a href="{{ url('articles/'.$a->slug) }}">
@@ -23,7 +23,7 @@
                         </a>
                         <!-- Nested media object -->
                         <div class="media">
-                            {{ Str::limit(strip_tags($a->html), 80) }}
+                            {{ Str::limit(strip_tags($a->html), 120) }}
                         </div>
                     </div>
                 </div>

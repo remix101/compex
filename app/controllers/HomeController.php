@@ -35,7 +35,6 @@ class HomeController extends BaseController {
                 $message->to('opatachibueze@gmail.com');
                 $message->subject('[CompanyExchange] New Visitor Message');
             });
-            Alert::info('Your message has been sent successfully.', 'Thank you.');
             return View::make('pages.support')->withSuccess('Your message has been sent successfully. Thank you.');
         }
         catch(\Exception $e)

@@ -38,7 +38,7 @@
                     {{ $success }}
                 </div>
                 @endif
-                @if(isset($error
+                @if(isset($error))
                 <div class="alert alert-dismissible alert-danger" role="alert">
                     <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true"><i class="fa fa-times-circle"></i></span><span class="sr-only">Close</span></button>
                     {{ $error }}

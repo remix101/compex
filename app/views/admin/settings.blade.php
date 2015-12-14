@@ -108,12 +108,12 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">Configure site results listing</label>
                             <div class="col-md-8">
-                                <input name="search_pages" class="form-control" value="{{ App\Models\SiteConfig::getValueByName('search_pages') }}" type="number" placeholder="Enter number of results to show in site search results">
+                                <input id="search_pages" name="search_pages" class="form-control" value="{{ App\Models\SiteConfig::getValueByName('search_pages') }}" type="number" placeholder="Enter number of results to show in site search results">
                             </div>
                         </div>
                     </div>
                     <div class="panel-footer">
-                        <button type="submit" class="btn btn-primary btn-other" style="margin-bottom:0px">
+                        <button onclick="updateSearch()" class="btn btn-primary btn-other" style="margin-bottom:0px">
                             <i class="fa fa-search"></i> Save Settings
                         </button>
                     </div>
@@ -154,6 +154,9 @@
             {
                 console.log(data);
                 toastr['success']('Menu settings saved successfully', 'Success');
+            },
+            error: function(data){
+                toastr['error']("Unable to save menu. Please try again", "Error");
             }
         });
 
@@ -200,38 +203,23 @@
         return false;
     });
 
-    function updateMenu()
+    function updateSearch(e)
     {
         $.ajax({
-            url: '{{ url("admin/menu/update") }}',
-            method: 'post',
-            data: {
-                menu: json_menu.value,
-            },
-            success: function(data){
-                toastr['success']("Menu saved sucessfully", "Success");
-            },
-            error: function(data){
-                toastr['error']("Unable to save menu. Please try again", "Error");
-            }
-        });
-    }
-
-    function updateSearch()
-    {
-        $.ajax({
-            url: '{{ url("admin/menu/search") }}',
+            url: '{{ url("admin/search") }}',
             method: 'post',
             data: {
                 search_pages: search_pages.value,
             },
             success: function(data){
+                console.log(data);
                 toastr['success']("Search settings saved sucessfully", "Success");
             },
             error: function(data){
                 toastr['error']("Unable to save search settings. Please try again", "Error");
             }
         });
+        e.preventDefault();
     }
 
     jQuery(document).ready(function(){
