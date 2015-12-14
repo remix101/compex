@@ -102,7 +102,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Email</label>
                         <div class="col-md-8">
-                            <input class="form-control has-dark-background" disabled id="email" placeholder="Email" type="email" required="" value="{{$user->email}}">
+                            <input class="form-control has-dark-background" id="email" placeholder="Email" type="email" required="" value="{{$user->email}}">
                         </div>
                     </div>
                     <div class="form-group">
