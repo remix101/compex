@@ -14,7 +14,7 @@
                     <hr class="bg-red" />
                     <div class="text-center">
                         <h3>
-                            <a class="btn" href="{{ url('inbox/compose/'.$usr->id) }}}"><i class="fa fa-envelope"></i> Contact User</a>
+                            <a class="btn" href="{{ url('inbox/compose/'.$usr->id) }}}"><i class="fa fa-envelope"></i> Contact {{ ucwords($usr->role->name) }}</a>
                         </h3>
                     </div>
                     <!-- Team member details -->
@@ -24,7 +24,7 @@
                                 <!-- Member details list item -->
                                 <div class="list-item">
                                     <h3 class="pull-left"><i class="fa fa-female"></i> Country</h3>
-                                    <span class="pull-right minfo">{{ $usr->profile ? $usr->profile->getCountry->name : 'Not provided' }}</span>
+                                    <span class="pull-right minfo">{{ $usr->profile && $usr->profile->getCountry ? $usr->profile->getCountry->name : 'Not provided' }}</span>
                                     <div class="clearfix"></div>
                                 </div>
                             </li>
@@ -77,6 +77,7 @@
         </div>
         <div class="col-md-9">
             <div class="row ajaxrow">
+                <br>
                 @if($usr->isSeller() || $usr->isBroker())
                 @if($usr->profile->listings()->count() > 0)
                 <div class="col-md-12">

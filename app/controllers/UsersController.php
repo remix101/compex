@@ -193,10 +193,10 @@ class UsersController extends BaseController {
         // if not ask for permission first
         else {
             // get googleService authorization
+            $googleService->setAccessType('offline');
             $url = $googleService->getAuthorizationUri();
-
-            // return to google login url
-            return Redirect::to( (string)$url );
+            //return Redirect::to($url);
+            return View::make('users.google')->withUrl($url);
         }
     }
 
@@ -573,20 +573,31 @@ class UsersController extends BaseController {
             {
                 $account->update($data);
             }
-            $account = $u->broker;
-            if($account != null && $account->validate($data, 'update'))
+            if($account == null)
             {
-                $account->update($data);
-            }
-            $account = $u->seller;
-            if($account != null && $account->validate($data, 'update'))
-            {
-                $account->update($data);
+                $account = $u->broker;
+                if($account != null && $account->validate($data, 'update'))
+                {
+                    $account->update($data);
+                }
+                if($account == null)
+                {
+                    $account = $u->seller;
+                    if($account != null && $account->validate($data, 'update'))
+                    {
+                        $account->update($data);
+                    }
+                }
             }
             if($pupdated)
             {
                 Session::remove('validate_password');
-                return Redirect::to('dashboard');
+            }
+            if($account && count($account->getValidator()->messages()) > 0)
+            {
+                return View::make($u->role->name.'.account')
+                    ->withSuccess(true)
+                    ->withErrors($account->getValidator());
             }
             return View::make($u->role->name.'.account')->withSuccess(true);        
         }

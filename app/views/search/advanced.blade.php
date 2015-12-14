@@ -16,7 +16,7 @@
                     <div class="col-md-5 col-sm-12">
                         <div class="form-group field-query">
                             <label class="control-label" for="keyword">Keyword</label>
-                            <input type="text" id="keyword" class="form-control" name="keyword" value="" placeholder="ex. Restaurant">
+                            <input type="text" id="keyword" class="form-control" name="q" value="{{ Input::get('q') }}" placeholder="ex. Restaurant">
                             <div class="help-block"></div>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                             <select id="categoryID" class="form-control" name="category">
                                 <option value="">Any</option>
                                 @foreach(App\Models\Category::all() as $c)
-                                <option value="{{$c->id}}">{{$c->name}}</option>
+                                <option value="{{$c->id}}" {{ Input::get('category') == $c->id ? 'selected' : '' }}>{{$c->name}}</option>
                                 @endforeach                            
                             </select>
 
@@ -63,7 +63,7 @@
                             <select id="ask_price" class="form-control" name="ask_price">
                                 <option value="">Any</option>
                                 @foreach(App\Models\PriceHelper::all() as $helper)
-                                <option value="{{ $helper->id }}">{{ $helper->text }}</option>
+                                <option value="{{ $helper->id }}" {{ Input::get('ask_price') == $helper->id ? 'selected' : '' }}>{{ $helper->text }}</option>
                                 @endforeach
                             </select>
                             </div>
@@ -74,7 +74,7 @@
                             <select id="annual_sales_revenue" class="form-control" name="annual_sales_revenue">
                                 <option value="">Any</option>
                                 @foreach(App\Models\PriceHelper::all() as $helper)
-                                <option value="{{ $helper->id }}">{{ $helper->text }}</option>
+                                <option value="{{ $helper->id }}" {{ Input::get('annual_sales_revenue') == $helper->id ? 'selected' : '' }}>{{ $helper->text }}</option>
                                 @endforeach
                             </select></div>
                         </div>                    </div>
@@ -84,7 +84,7 @@
                             <select id="annual_cash_flow" class="form-control" name="annual_cash_flow">
                                 <option value="">Any</option>
                                 @foreach(App\Models\PriceHelper::all() as $helper)
-                                <option value="{{ $helper->id }}">{{ $helper->text }}</option>
+                                <option value="{{ $helper->id }}" {{ Input::get('annual_cash_flow') == $helper->id ? 'selected' : '' }}>{{ $helper->text }}</option>
                                 @endforeach
                             </select></div>
                         </div>
@@ -97,7 +97,7 @@
                                 <select id="annual_operation_cost" class="form-control" name="annual_operation_cost">
                                     <option value="">Any</option>
                                     @foreach(App\Models\PriceHelper::all() as $helper)
-                                    <option value="{{ $helper->id }}">{{ $helper->text }}</option>
+                                    <option value="{{ $helper->id }}" {{ Input::get('annual_operation_cost') == $helper->id ? 'selected' : '' }}>{{ $helper->text }}</option>
                                     @endforeach
                                 </select>
                             </div>

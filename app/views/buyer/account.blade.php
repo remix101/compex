@@ -58,9 +58,9 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Country</label>
                         <div class="col-md-8">
-                            <select name="country_id" class="form-control select2me">
+                            <select name="country" class="form-control select2me">
                                 @foreach(App\Models\Country::all() as $c)
-                                <option value="{{$c->id}}" {{ $c->id == $user->buyer->country_id ? 'selected' : ''}}>{{$c->name}}</option>
+                                <option value="{{$c->id}}" {{ $c->id == $user->buyer->country ? 'selected' : ''}}>{{$c->name}}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -170,7 +170,7 @@ class ListingsController extends BaseController {
 
     public function categoryListings($category)
     {
-        $results = $category->listings()->paginate($this->search_pages);
+        $results = $category->listings()->verified()->paginate($this->search_pages);
 
         if (Request::ajax())
         {
@@ -183,7 +183,7 @@ class ListingsController extends BaseController {
 
     public function countryListings($country)
     {
-        $results = $country->listings()->paginate($this->search_pages);
+        $results = $country->listings()->verified()->paginate($this->search_pages);
 
         if (Request::ajax())
         {

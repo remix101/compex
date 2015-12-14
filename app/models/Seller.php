@@ -27,11 +27,6 @@ class Seller extends BaseModel {
         return $this->belongsTo('User', 'user_id');
     }   
 
-    public function country()
-    {
-        return $this->belongsTo('App\Models\Country', 'country');
-    }
-
     public function getCountry()
     {
         return $this->belongsTo('App\Models\Country', 'country');

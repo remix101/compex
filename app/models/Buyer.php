@@ -30,11 +30,6 @@ class Buyer extends BaseModel {
     {
         return $this->hasMany('App\Models\Advert', 'buyer_id');
     }
-
-    public function country()
-    {
-        return $this->belongsTo('App\Models\Country', 'country');
-    }
     
     public function getCountry()
     {

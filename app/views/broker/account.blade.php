@@ -71,7 +71,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Country</label>
                         <div class="col-md-8">
-                            <select name="country_id" class="form-control select2me">
+                            <select name="country" class="form-control select2me">
                                 @foreach(App\Models\Country::all() as $c)
                                 <option value="{{$c->id}}" {{ $c->id == $user->broker->country ? 'selected' : ''}}>{{$c->name}}</option>
                                 @endforeach
@@ -96,7 +96,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Address</label>
                         <div class="col-md-8">
-                            <textarea class="form-control" id="address" placeholder="Address" rows="2">{{$user->broker->address}}</textarea>
+                            <textarea class="form-control" id="address" name="address" placeholder="Address" rows="2">{{$user->broker->address}}</textarea>
                         </div>
                     </div>
                     <div class="form-group">

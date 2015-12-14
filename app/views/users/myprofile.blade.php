@@ -77,7 +77,7 @@
         <div class="col-md-9">
             <div class="row ajaxrow">
                 @if($user->isSeller() || $user->isBroker())
-                @if($user->profile->listings()->count() > 0)
+                @if($user->profile->listings()->verified()->count() > 0)
                 <div class="col-md-12">
                     <h4>My recent listings</h4>
                 </div>

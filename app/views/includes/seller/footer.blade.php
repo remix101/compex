@@ -103,10 +103,10 @@
 {{ HTML::script('assets/js/flowtype.js') }}
 {{ HTML::style("assets/css/sweet-alert.css", ['property' => 'stylesheet']) }}
 {{ HTML::script("assets/js/sweet-alert.min.js") }}
-<![if IE]>
+<!--[if IE]>
 {{ HTML::script('assets/js/polyfill.object-fit.min.js') }}
 {{ HTML::style('assets/css/polyfill.object-fit.min.css', ['property' => 'stylesheet']) }}
-<![endif]>
+<![endif]-->
 
 <!-- Include this after the sweet alert js file -->
 @include('sweet::alert')

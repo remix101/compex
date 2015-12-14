@@ -171,10 +171,11 @@
 	
 	.menu > li > a {
 		position: relative;
-		margin-left: 10px;
-		padding: 10px 10px 42px 10px;
+		margin-left: 4px;
+		padding: 10px 6px;
 		font-weight: 700;
-		letter-spacing: 0.5px;
+        /*
+		letter-spacing: 0.5px;*/
 		text-decoration: none;
 		text-transform: uppercase;
 		border-bottom: none;
