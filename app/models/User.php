@@ -48,7 +48,7 @@ class User extends App\Models\BaseModel implements UserInterface, RemindableInte
 	 *
 	 * @var array
 	 */
-    protected $hidden = array('password', 'remember_token');
+    protected $hidden = array('password', 'remember_token', 'verify_code');
 
     /**
     * The properties of this model that can be filled automatically

@@ -78,7 +78,8 @@
     
     function getRole(role_id)
     {
-        switch(role_id)
+        r = parseInt(role_id);
+        switch(r)
         {
             case {{ Config::get('constants.ROLE_BUYER') }}:
                 return 'buyer';
@@ -99,7 +100,7 @@
             option: function (item, escape) {
                 return '<div>' +
                     '<span class="title"><img class="pm-av" src="'
-                    +  'https://www.gravatar.com/avatar/' + md5(item.email) + '?s=32' 
+                    +  'https://www.gravatar.com/avatar/' + md5(escape(item.email)) + '?s=32' 
                     +'"/>' +
                     '<span class="pm-name">' + escape(item.first_name) + ' ' + escape(item.last_name) + '</span>' +
                     '</span>'+
