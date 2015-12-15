@@ -52,7 +52,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Phone Number</label>
                         <div class="col-md-8">
-                            <input class="form-control" name="phone_number" id="phone" placeholder="Mobile Phone" type="text" required="" value="{{$user->seller->phone_number}}">
+                            <input class="form-control" name="phone_number" id="inputPhone" placeholder="Mobile Phone" type="text" required="" value="{{$user->seller->phone_number}}">
                         </div>
                     </div>
                     <div class="form-group required">
@@ -65,7 +65,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Work Phone</label>
                         <div class="col-md-8">
-                            <input class="form-control" name="work_phone" id="work_phone" placeholder="Work Phone" type="text" required="" value="{{$user->seller->work_phone}}">
+                            <input class="form-control" name="work_phone" id="inputPhone" placeholder="Work Phone" type="text" required="" value="{{$user->seller->work_phone}}">
                         </div>
                     </div>
                     <div class="form-group">
@@ -124,4 +124,12 @@
         </div>
     </form>	
 </div>
+@stop
+
+@section('footerscripts')
+
+{{ HTML::style("vendor/intl-phone/css/intlTelInput.css", ['property' => 'stylesheet']) }}
+{{ HTML::script("vendor/intl-phone/js/intlTelInput.min.js") }}
+{{ HTML::script("app.js") }}
+
 @stop

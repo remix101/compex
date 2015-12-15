@@ -138,6 +138,10 @@ class MessagesController extends BaseController {
         {
             $data['phone_number'] = str_replace(' ', '', $data['phone_number']);
         }
+        if(isset($data['work_phone']))
+        {
+            $data['work_phone'] = str_replace(' ', '', $data['work_phone']);
+        }
         $u = new User;
         $data['role_id'] = $role;
         switch(strtolower($role))

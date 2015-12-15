@@ -49,6 +49,10 @@ class SellersController extends BaseController {
         {
             $data['work_phone'] = str_replace(' ', '', $data['work_phone']);
         }
+        if(isset($data['phone_number']))
+        {
+            $data['phone_number'] = str_replace(' ', '', $data['phone_number']);
+        }
         $u = new User;
         $a = false;
         $role_id = Input::get('role_id');

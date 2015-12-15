@@ -59,7 +59,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-3" for="phone">Phone <small>Optional</small></label>
                     <div class="col-md-9">
-                        <input class="form-control" id="phonenumber" maxlength="16" name="phone_number" placeholder="Your Phone number" type="text" value="" />                     
+                        <input class="form-control" id="inputPhone" maxlength="17" name="phone_number" placeholder="Your Phone number" type="text" value="" />                     
                     </div>
                 </div>
                 <div class="form-group">
@@ -99,5 +99,13 @@
         </div>
     </div>
 </div>
+
+@stop
+
+@section('footerscripts')
+
+{{ HTML::style("vendor/intl-phone/css/intlTelInput.css", ['property' => 'stylesheet']) }}
+{{ HTML::script("vendor/intl-phone/js/intlTelInput.min.js") }}
+{{ HTML::script("app.js") }}
 
 @stop

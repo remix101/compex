@@ -52,7 +52,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Phone Number</label>
                         <div class="col-md-8">
-                            <input class="form-control" name="phone_number" id="phone" placeholder="Mobile Phone" type="text" required="" value="{{$user->buyer->phone_number}}">
+                            <input type="text" maxlength="17" class="form-control" value="{{ $user->buyer->phone_number }}" name="phone_number" id="inputPhone" placeholder="Use international format, e.g. +234 809 901 9404">
                         </div>
                     </div>
                     <div class="form-group">
@@ -93,4 +93,12 @@
         </div>
     </form>	
 </div>
+@stop
+
+@section('footerscripts')
+
+{{ HTML::style("vendor/intl-phone/css/intlTelInput.css", ['property' => 'stylesheet']) }}
+{{ HTML::script("vendor/intl-phone/js/intlTelInput.min.js") }}
+{{ HTML::script("app.js") }}
+
 @stop

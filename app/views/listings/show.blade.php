@@ -255,5 +255,8 @@
 
 {{ HTML::script('assets/js/jquery.fancy-thumbs.js') }}
 {{ HTML::style('assets/css/jquery.fancy-thumbs.css') }}
+{{ HTML::style("vendor/intl-phone/css/intlTelInput.css", ['property' => 'stylesheet']) }}
+{{ HTML::script("vendor/intl-phone/js/intlTelInput.min.js") }}
+{{ HTML::script("app.js") }}
 
 @stop

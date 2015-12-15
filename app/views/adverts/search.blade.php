@@ -174,6 +174,9 @@
 
 @section('footerscripts')
 
+{{ HTML::style("vendor/intl-phone/css/intlTelInput.css", ['property' => 'stylesheet']) }}
+{{ HTML::script("vendor/intl-phone/js/intlTelInput.min.js") }}
+{{ HTML::script("app.js") }}
 {{ HTML::style('assets/css/search.css') }}
 
 <script type="text/javascript">

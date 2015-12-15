@@ -448,6 +448,10 @@ class UsersController extends BaseController {
         {
             $data['phone_number'] = str_replace(' ', '', $data['phone_number']);
         }
+        if(isset($data['work_phone']))
+        {
+            $data['work_phone'] = str_replace(' ', '', $data['work_phone']);
+        }
         $u = new User;
         $a = false;
         $role_id = Input::get('role_id');
@@ -556,6 +560,10 @@ class UsersController extends BaseController {
         $data = Input::all();
         $u = Auth::user();
         $pupdated = false;
+        if(isset($data['phone_number']))
+        {
+            $data['phone_number'] = str_replace(' ', '', $data['phone_number']);
+        }
         if($u->validate($data, 'update'))
         {
             if(Input::get('password_confirmation') != "" && (Input::get('password') === Input::get('password_confirmation')))

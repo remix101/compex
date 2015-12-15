@@ -48,12 +48,6 @@
                             <input class="form-control" name="last_name" id="last-name" placeholder="Last Name" type="text" required="" value="{{$user->last_name}}">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Phone Number</label>
-                        <div class="col-md-9">
-                            <input class="form-control" name="phone" id="phone" placeholder="Mobile Phone" type="text" required="" value="{{$user->phone}}">
-                        </div>
-                    </div>
                 </div>
                 <div class="col-md-6">
                     <h4 style="color:#4cae4c;">Login Credentials</h4>
