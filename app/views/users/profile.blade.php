@@ -14,7 +14,7 @@
                     <hr class="bg-red" />
                     <div class="text-center">
                         <h3>
-                            <a class="btn" href="{{ url('inbox/compose/'.$usr->id) }}}"><i class="fa fa-envelope"></i> Contact {{ ucwords($usr->role->name) }}</a>
+                            <a class="btn" href="{{ url('inbox/compose/'.$usr->id) }}"><i class="fa fa-envelope"></i> Contact {{ ucwords($usr->role->name) }}</a>
                         </h3>
                     </div>
                     <!-- Team member details -->

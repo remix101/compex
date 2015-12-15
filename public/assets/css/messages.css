@@ -97,8 +97,12 @@
 .pm-name
 {
     padding-left: 10px;
+    margin-bottom: 0px;
+}
+.meta li{
+    margin: 0px;
 }
 .meta span{
-    font-size: .8em;
+    font-size: .9em;
     padding-left: 10px;
 }
