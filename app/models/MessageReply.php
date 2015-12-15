@@ -30,7 +30,7 @@ class MessageReply extends BaseModel {
                 $email = $reply->receiver->email;
                 $data['body'] = "{$reply->sender->fullName} has just replied to your message on CompanyExchange.<br>Click the link below to view message now<br>";
                 $data['url']['title'] = 'View Message';
-                $data['url']['link'] = url("inbox/$reply->message->id");
+                $data['url']['link'] = url("inbox/$reply->message_id");
                 $data['title'] = 'You have a new reply on CompanyExchange';
                 Mail::queue('emails.templates.custom', $data, function($message) use($email){
                     $message->from('listings@ng.cx', 'CompanyExchange');
@@ -62,5 +62,11 @@ class MessageReply extends BaseModel {
     public function scopeUnread($query)
     {
         return $query->where('unread', '=', 1);
+    }
+    
+    public function scopeUserUnread($query, $uid = false)
+    {
+        $uid = ($uid == false && \Auth::check()) ? \Auth::user()->id : $uid;
+        return $query->whereRaw("recipient_id = $uid AND unread = 1");
     }
 }

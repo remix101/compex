@@ -29,7 +29,7 @@ class MessagesController extends BaseController {
     {
         $user = Auth::user();
         $messages = $user->allMessages()->paginate(15);
-        $data['unread_count'] = $user->allMessages()->hasUnreadReply()->count();
+        $data['unread_count'] = Message::userUnread()->count() + MessageReply::userUnread()->count();
         return View::make($user->role->name.'.messages.inbox')->with(compact('data', 'messages'));
     }
 

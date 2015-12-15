@@ -76,14 +76,8 @@ class Message extends BaseModel {
     {
         if(\Auth::check())
         {
-            return ($this->unread == 1 || $this->unreadReplies()->where('recipient_id', '=', \Auth::user()->id)->count() > 0);
+            return (($this->unread == 1 && $this->recipient_id == \Auth::user()->id) || $this->unreadReplies()->where('recipient_id', '=', \Auth::user()->id)->count() > 0);
         }
-    }
-
-    public function scopeHasUnreadReply($query, $uid = false)
-    {
-        $uid = ($uid == false && \Auth::check()) ? \Auth::user()->id : $uid;
-        return $query->toSql();//->where('recipient_id', '=', $uid);
     }
 
     public function getLastReply()
@@ -115,4 +109,10 @@ class Message extends BaseModel {
     {
         return $this->hasMany('App\Models\MessageReply', 'message_id')->unread()->asc('created_at');
     }   
+
+    public function scopeUserUnread($query, $uid = false)
+    {
+        $uid = ($uid == false && \Auth::check()) ? \Auth::user()->id : $uid;
+        return $query->whereRaw("recipient_id = $uid AND unread = 1");
+    }
 }
